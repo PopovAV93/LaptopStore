@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Goods List";
+    //Layout = "_Layout";
+}
+
+<h1>Goods list</h1>
+<h2>@Model.currCategory</h2>
+
+@{                        
+    foreach(var laptop in Model.allLaptops)
+    {
+        <h3>Model: @laptop.name</h3>
+        <p>Price: @laptop.price.ToString("c", System.Globalization.CultureInfo.GetCultureInfo("en-us"))</p>
+    }
+}
+

@@ -58,6 +58,7 @@ namespace LaptopStore
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }
