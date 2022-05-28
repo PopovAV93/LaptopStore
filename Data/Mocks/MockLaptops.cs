@@ -22,7 +22,7 @@ namespace LaptopStore.Data.Mocks
                         isAvailable = true,
                         isFavorite = true,
                         price = 3000,
-                        imgUrl = "Img\\ROG Strix G15_17.png",
+                        imgUrl = "/Img/ROG Strix G15_17.png",
                         shortDesc = "ROG Strix G15/17 подходит для широкого спектра задач.",
                         longDesc = "Благодаря мощной конфигурации, которая включает в себя процессор AMD Ryzen 9 5900HX " +
                                     "и видеокарту AMD Radeon RX 6800M, этот ноутбук подходит для широкого спектра задач. " +
@@ -43,7 +43,7 @@ namespace LaptopStore.Data.Mocks
                         isAvailable = false,
                         isFavorite = true,
                         price = 666,
-                        imgUrl = "Img\\MSI MODERN 14 B10MW-294XRU.jpg",
+                        imgUrl = "/Img/MSI MODERN 14 B10MW-294XRU.jpg",
                         shortDesc = "Нужен безотказный ассистент в работе? Внимание – он перед вами. Это ультрабук MSI MODERN 14 B10MW-294XRU.",
                         longDesc = "Нужен безотказный ассистент в работе? Внимание – он перед вами. Это ультрабук MSI MODERN 14 B10MW-294XRU." +
                                     " Его матовый 14-дюймовый по диагонали экран транслирует изображение с высоким (1920x1080 пикс.) разрешением. " +
@@ -62,7 +62,7 @@ namespace LaptopStore.Data.Mocks
                         isAvailable = false,
                         isFavorite = true,
                         price = 1050,
-                        imgUrl= "Img\\Lenovo IdeaPad Flex 5 14ALC05.jpg",
+                        imgUrl= "/Img/Lenovo IdeaPad Flex 5 14ALC05.jpg",
                         shortDesc = "Ноутбук IdeaPad Flex 5 с 14-дюймовым дисплеем, оснащенный мобильным процессором AMD Ryzen обеспечивает высокую " +
                                     "производительность и широкие графические возможности в гибком устройстве",
                         longDesc = "Ноутбук IdeaPad Flex 5 с 14-дюймовым дисплеем, оснащенный мобильным процессором AMD Ryzen обеспечивает высокую " +
@@ -78,7 +78,7 @@ namespace LaptopStore.Data.Mocks
                         isAvailable = true,
                         isFavorite = false,
                         price = 233,
-                        imgUrl= "Img\\Irbis NB77.jpg",
+                        imgUrl= "/Img/Irbis NB77.jpg",
                         shortDesc = "Ноутбук Irbis NB77 обладает всем необходимым для удобной и продуктивной работы как в офисе, так и во время поездок.",
                         longDesc = "Ноутбук Irbis NB77 обладает всем необходимым для удобной и продуктивной работы как в офисе, " +
                                     "так и во время поездок. Он выполнен в корпусе с компактными размерами и весом 1.3 кг. " +
@@ -93,7 +93,7 @@ namespace LaptopStore.Data.Mocks
                         isAvailable = true,
                         isFavorite = false,
                         price = 566,
-                        imgUrl= "Img\\HP Laptop 14s-fq0111ur.jpg",
+                        imgUrl= "/Img/HP Laptop 14s-fq0111ur.jpg",
                         shortDesc = "Стильный, компактный ноутбук с тонкорамочным экраном и длительным временем работы от аккумулятора",
                         longDesc = "Стильный, компактный ноутбук с тонкорамочным экраном и длительным временем работы от аккумулятора " +
                                     "позволит вам всегда оставаться на связи. Надежный ноутбук HP с диагональю экрана 14 дюймов позволяет " +
@@ -108,7 +108,7 @@ namespace LaptopStore.Data.Mocks
                         isAvailable = true,
                         isFavorite = false,
                         price = 333,
-                        imgUrl= "Img\\Digma EVE 15 C407.jpg",
+                        imgUrl= "/Img/Digma EVE 15 C407.jpg",
                         shortDesc = "Digma EVE 15 C407 создан для тех, кто хочет получить надежное и производительное компьютерное устройство",
                         longDesc = "Digma EVE 15 C407 создан для тех, кто хочет получить надежное и производительное компьютерное устройство " +
                                     "с наиболее востребованным функционалом. Данная модель полностью удовлетворяет данные требования. " +
@@ -124,7 +124,7 @@ namespace LaptopStore.Data.Mocks
                         isAvailable = true,
                         isFavorite = true,
                         price = 1150,
-                        imgUrl= "Img\\ASUS Vivobook 13 Slate OLED T3300KA-LQ084W.jfif",
+                        imgUrl= "/Img/ASUS Vivobook 13 Slate OLED T3300KA-LQ084W.jfif",
                         shortDesc = "Представляем Vivobook 13 Slate OLED – фантастический ноутбук-трансформер, созданный для мобильного стиля жизни.",
                         longDesc = "Представляем Vivobook 13 Slate OLED – фантастический ноутбук-трансформер, созданный для мобильного стиля жизни. " +
                                     "Он легко адаптируется ко всему, что бы ни делал его владелец, будь то работа или учеба, отдых или общение. " +
@@ -140,7 +140,7 @@ namespace LaptopStore.Data.Mocks
                         isAvailable = false,
                         isFavorite = true,
                         price = 1333,
-                        imgUrl= "Img\\Acer Nitro 5 AN515-55-534C.jpg",
+                        imgUrl= "/Img/Acer Nitro 5 AN515-55-534C.jpg",
                         shortDesc = "Ноутбук Acer Nitro 5 AN515-55-534C обладает мощной аппаратной конфигурацией, что делает его идеальным игровым решением.",
                         longDesc = "Ноутбук Acer Nitro 5 AN515-55-534C обладает мощной аппаратной конфигурацией, что делает его идеальным игровым решением. " +
                                     "Модель с диагональю экрана 15.6 дюймов использует технологию IPS, которая позволяет получить настолько реалистичное изображение, " +

@@ -6,6 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\Img\Acer Nitro 5 AN515-55-534C.jpg" />
+    <None Include="wwwroot\Img\ASUS Vivobook 13 Slate OLED T3300KA-LQ084W.jfif" />
+    <None Include="wwwroot\Img\Digma EVE 15 C407.jpg" />
+    <None Include="wwwroot\Img\HP Laptop 14s-fq0111ur.jpg" />
+    <None Include="wwwroot\Img\Irbis NB77.jpg" />
+    <None Include="wwwroot\Img\Lenovo IdeaPad Flex 5 14ALC05.jpg" />
+    <None Include="wwwroot\Img\MSI MODERN 14 B10MW-294XRU.jpg" />
+    <None Include="wwwroot\Img\ROG Strix G15_17.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.24" />
