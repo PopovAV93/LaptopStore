@@ -1,24 +1,28 @@
-﻿using LaptopStore.Data.Interfaces;
-using LaptopStore.Data.Models;
+﻿using LaptopStore.Data.Models;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LaptopStore.Data.Mocks
+namespace LaptopStore.Data
 {
-    public class MockLaptops : ILaptops
+    public class DBObjects
     {
-        private readonly ILaptopCategories _laptopCategories = new MockLaptopCategories();
-        public IEnumerable<Laptop> getLaptops
+        public static void Initial(AppDBContent content)
         {
-            get
+            if (!content.Category.Any())
             {
-                return new List<Laptop>
-                {
+                content.Category.AddRange(Categories.Select(c => c.Value));
+            }
+            if (!content.Laptop.Any())
+            {
+                content.AddRange
+                (
                     new Laptop
                     {
                         name = "ROG Strix G15/17",
                         //categoryId = 4,
-                        Category = _laptopCategories.AllCategories.Single(x => x.id == 4),
+                        Category = Categories["Игровые"],
                         isAvailable = true,
                         isFavorite = true,
                         price = 3000,
@@ -39,7 +43,7 @@ namespace LaptopStore.Data.Mocks
                     {
                         name = "MSI MODERN 14 B10MW-294XRU",
                         //categoryId = 1,
-                        Category = _laptopCategories.AllCategories.Single(x => x.id == 1),
+                        Category = Categories["Ультрабуки"],
                         isAvailable = false,
                         isFavorite = true,
                         price = 666,
@@ -58,11 +62,11 @@ namespace LaptopStore.Data.Mocks
                     {
                         name = "Lenovo IdeaPad Flex 5 14ALC05",
                         //categoryId = 2,
-                        Category = _laptopCategories.AllCategories.Single(x => x.id == 2),
+                        Category = Categories["Трансформеры"],
                         isAvailable = false,
                         isFavorite = true,
                         price = 1050,
-                        imgUrl= "/Img/Lenovo IdeaPad Flex 5 14ALC05.jpg",
+                        imgUrl = "/Img/Lenovo IdeaPad Flex 5 14ALC05.jpg",
                         shortDesc = "Ноутбук IdeaPad Flex 5 с 14-дюймовым дисплеем, оснащенный мобильным процессором AMD Ryzen обеспечивает высокую " +
                                     "производительность и широкие графические возможности в гибком устройстве",
                         longDesc = "Ноутбук IdeaPad Flex 5 с 14-дюймовым дисплеем, оснащенный мобильным процессором AMD Ryzen обеспечивает высокую " +
@@ -74,11 +78,11 @@ namespace LaptopStore.Data.Mocks
                     {
                         name = "Irbis NB77",
                         //categoryId = 3,
-                        Category = _laptopCategories.AllCategories.Single(x => x.id == 3),
+                        Category = Categories["Офисные"],
                         isAvailable = true,
                         isFavorite = false,
                         price = 233,
-                        imgUrl= "/Img/Irbis NB77.jpg",
+                        imgUrl = "/Img/Irbis NB77.jpg",
                         shortDesc = "Ноутбук Irbis NB77 обладает всем необходимым для удобной и продуктивной работы как в офисе, так и во время поездок.",
                         longDesc = "Ноутбук Irbis NB77 обладает всем необходимым для удобной и продуктивной работы как в офисе, " +
                                     "так и во время поездок. Он выполнен в корпусе с компактными размерами и весом 1.3 кг. " +
@@ -89,11 +93,11 @@ namespace LaptopStore.Data.Mocks
                     {
                         name = "HP Laptop 14s-fq0111ur",
                         //categoryId = 1,
-                        Category = _laptopCategories.AllCategories.Single(x => x.id == 1),
+                        Category = Categories["Ультрабуки"],
                         isAvailable = true,
                         isFavorite = false,
                         price = 566,
-                        imgUrl= "/Img/HP Laptop 14s-fq0111ur.jpg",
+                        imgUrl = "/Img/HP Laptop 14s-fq0111ur.jpg",
                         shortDesc = "Стильный, компактный ноутбук с тонкорамочным экраном и длительным временем работы от аккумулятора",
                         longDesc = "Стильный, компактный ноутбук с тонкорамочным экраном и длительным временем работы от аккумулятора " +
                                     "позволит вам всегда оставаться на связи. Надежный ноутбук HP с диагональю экрана 14 дюймов позволяет " +
@@ -104,11 +108,11 @@ namespace LaptopStore.Data.Mocks
                     {
                         name = "Digma EVE 15 C407",
                         //categoryId = 3,
-                        Category = _laptopCategories.AllCategories.Single(x => x.id == 3),
+                        Category = Categories["Офисные"],
                         isAvailable = true,
                         isFavorite = false,
                         price = 333,
-                        imgUrl= "/Img/Digma EVE 15 C407.jpg",
+                        imgUrl = "/Img/Digma EVE 15 C407.jpg",
                         shortDesc = "Digma EVE 15 C407 создан для тех, кто хочет получить надежное и производительное компьютерное устройство",
                         longDesc = "Digma EVE 15 C407 создан для тех, кто хочет получить надежное и производительное компьютерное устройство " +
                                     "с наиболее востребованным функционалом. Данная модель полностью удовлетворяет данные требования. " +
@@ -120,11 +124,11 @@ namespace LaptopStore.Data.Mocks
                     {
                         name = "ASUS Vivobook 13 Slate OLED T3300KA-LQ084W",
                         //categoryId = 2,
-                        Category = _laptopCategories.AllCategories.Single(x => x.id == 2),
+                        Category = Categories["Трансформеры"],
                         isAvailable = true,
                         isFavorite = true,
                         price = 1150,
-                        imgUrl= "/Img/ASUS Vivobook 13 Slate OLED T3300KA-LQ084W.jfif",
+                        imgUrl = "/Img/ASUS Vivobook 13 Slate OLED T3300KA-LQ084W.jfif",
                         shortDesc = "Представляем Vivobook 13 Slate OLED – фантастический ноутбук-трансформер, созданный для мобильного стиля жизни.",
                         longDesc = "Представляем Vivobook 13 Slate OLED – фантастический ноутбук-трансформер, созданный для мобильного стиля жизни. " +
                                     "Он легко адаптируется ко всему, что бы ни делал его владелец, будь то работа или учеба, отдых или общение. " +
@@ -136,11 +140,11 @@ namespace LaptopStore.Data.Mocks
                     {
                         name = "Acer Nitro 5 AN515-55-534C",
                         //categoryId = 4,
-                        Category = _laptopCategories.AllCategories.Single(x => x.id == 4),
+                        Category = Categories["Игровые"],
                         isAvailable = false,
                         isFavorite = true,
                         price = 1333,
-                        imgUrl= "/Img/Acer Nitro 5 AN515-55-534C.jpg",
+                        imgUrl = "/Img/Acer Nitro 5 AN515-55-534C.jpg",
                         shortDesc = "Ноутбук Acer Nitro 5 AN515-55-534C обладает мощной аппаратной конфигурацией, что делает его идеальным игровым решением.",
                         longDesc = "Ноутбук Acer Nitro 5 AN515-55-534C обладает мощной аппаратной конфигурацией, что делает его идеальным игровым решением. " +
                                     "Модель с диагональю экрана 15.6 дюймов использует технологию IPS, которая позволяет получить настолько реалистичное изображение, " +
@@ -150,16 +154,34 @@ namespace LaptopStore.Data.Mocks
                                     "и отображением графики на экране, поскольку устройство использует видеопроцессор GeForce RTX 3050, особенность которой в памяти 4 ГБ. " +
                                     "Аппаратную мощь модели представляет модуль DDR4, взаимодействующий с процессором Intel Core i5 10300H."
                     }
-
-                };
+                );
             }
+
+            content.SaveChanges();
         }
 
-        public IEnumerable<Laptop> getFavLaptops { get; set; }
-
-        public Laptop getObjectLaptop(int laptopId)
+        private static Dictionary<string, Category> category;
+        public static Dictionary<string, Category> Categories
         {
-            throw new System.NotImplementedException();
+            get {
+                if(category == null)
+                {
+                    var list = new Category[]
+                    {
+                        new Category {categoryName = "Ультрабуки", desc = "Ультратонкие ноутбуки"},
+                        new Category {categoryName = "Трансформеры", desc = "Ноутбуки с сенсорным экраном, гибрид планшетного компьютера и ноутбука"},
+                        new Category {categoryName = "Офисные", desc = "Ноутбики для учебы и работы"},
+                        new Category {categoryName = "Игровые", desc = "Ноутбуки с производительными GPU и CPU"}
+                    };
+
+                    category = new Dictionary<string, Category>();
+                    foreach (Category el in list)
+                    {
+                        category.Add(el.categoryName, el);
+                    }
+                }
+                return category;
+            }
         }
     }
 }

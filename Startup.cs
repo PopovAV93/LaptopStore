@@ -1,3 +1,4 @@
+using LaptopStore.Data;
 using LaptopStore.Data.Interfaces;
 using LaptopStore.Data.Mocks;
 using Microsoft.AspNetCore.Builder;
@@ -6,29 +7,34 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LaptopStore.Data.Repository;
 
 namespace LaptopStore
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private IConfigurationRoot _confString;
+        public Startup(IHostEnvironment hostEnv)
         {
-            Configuration = configuration;
+            _confString = new ConfigurationBuilder().SetBasePath(hostEnv.ContentRootPath).AddJsonFile("dbsettings.json").Build();
         }
-
-        public IConfiguration Configuration { get; }
+        
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionString = _confString.GetConnectionString("DefaultConnection");
             services.AddRazorPages();
-            services.AddTransient<ILaptops, MockLaptops>();
-            services.AddTransient<ILaptopCategories, MockLaptopCategories>();
+            services.AddTransient<ILaptops, LaptopRepository>();
+            services.AddTransient<ILaptopCategories, CategoryRepository>();
             services.AddMvc();
+            services.AddDbContext<AppDBContent>(builder => builder.UseSqlServer(connectionString, 
+                b => b.MigrationsAssembly("LaptopStore")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,6 +66,12 @@ namespace LaptopStore
                 endpoints.MapRazorPages();
                 endpoints.MapDefaultControllerRoute();
             });
+
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                AppDBContent content = scope.ServiceProvider.GetRequiredService<AppDBContent>();
+                DBObjects.Initial(content);
+            }
         }
     }
 }

@@ -18,11 +18,11 @@ namespace LaptopStore.Controllers
         public ViewResult List()
         {
 
-            //var laptops = _allLaptops.Laptops;
+            //var laptops = _allLaptops.getLaptops;
             //ViewBag.Title = "Goods List";
             LaptopListViewModel obj = new LaptopListViewModel();
-            obj.allLaptops = _allLaptops.Laptops;
-            obj.currCategory = "Laptops";
+            obj.allLaptops = _allLaptops.getLaptops;
+            obj.currCategory = "getLaptops";
             return View(obj);
         }
         

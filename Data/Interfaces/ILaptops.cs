@@ -5,8 +5,8 @@ namespace LaptopStore.Data.Interfaces
 {
     public interface ILaptops
     {
-        IEnumerable<Laptop> Laptops { get;}
-        IEnumerable<Laptop> FavCars { get; set; }
+        IEnumerable<Laptop> getLaptops { get; }
+        IEnumerable<Laptop> getFavLaptops { get; }
         Laptop getObjectLaptop(int laptopId);
     }
 }
