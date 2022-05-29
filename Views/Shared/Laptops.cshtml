@@ -1,0 +1,8 @@
+﻿@model Laptop
+<div class="col-lg-4">
+<img class="img-thumbnail" src="@Model.imgUrl" alt="@Model.name"/>
+<h2>@Model.name</h2>
+<p>@Model.shortDesc</p>
+<p>Price: @Model.price.ToString("c", System.Globalization.CultureInfo.GetCultureInfo("en-us"))</p>
+<p><a class="btn btn-warning" href="#">More</a></p>
+</div>

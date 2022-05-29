@@ -7,15 +7,9 @@
 <h3>@Model.currCategory</h3>
 <div class="row mt-5 mb-2">
     @{                        
-        foreach(var laptop in Model.allLaptops)
+        foreach(Laptop laptop in Model.allLaptops)
         {
-                <div class="col-lg-4">
-                <img class="img-thumbnail" src="@laptop.imgUrl" alt="@laptop.name"/>
-                <h2>@laptop.name</h2>
-                <p>@laptop.shortDesc</p>
-                <p>Price: @laptop.price.ToString("c", System.Globalization.CultureInfo.GetCultureInfo("en-us"))</p>
-                <p><a class="btn btn-warning" href="#">More</a></p>
-                </div>
+                @Html.Partial("Laptops", laptop)
         }
     }
 </div>

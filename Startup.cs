@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LaptopStore.Data.Repository;
+using Microsoft.AspNetCore.Http;
+using LaptopStore.Data.Models;
 
 namespace LaptopStore
 {
@@ -29,12 +31,16 @@ namespace LaptopStore
         public void ConfigureServices(IServiceCollection services)
         {
             string connectionString = _confString.GetConnectionString("DefaultConnection");
+            services.AddDbContext<AppDBContent>(builder => builder.UseSqlServer(connectionString,
+                b => b.MigrationsAssembly("LaptopStore")));
             services.AddRazorPages();
             services.AddTransient<ILaptops, LaptopRepository>();
             services.AddTransient<ILaptopCategories, CategoryRepository>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(c => Cart.getCart(c));
             services.AddMvc();
-            services.AddDbContext<AppDBContent>(builder => builder.UseSqlServer(connectionString, 
-                b => b.MigrationsAssembly("LaptopStore")));
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,11 +62,9 @@ namespace LaptopStore
             app.UseHttpsRedirection();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
