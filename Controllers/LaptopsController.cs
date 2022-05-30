@@ -22,7 +22,7 @@ namespace LaptopStore.Controllers
             //ViewBag.Title = "Goods List";
             LaptopListViewModel obj = new LaptopListViewModel();
             obj.allLaptops = _allLaptops.getLaptops;
-            obj.currCategory = "getLaptops";
+            obj.currCategory = "Laptops";
             return View(obj);
         }
         
