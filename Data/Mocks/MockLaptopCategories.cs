@@ -12,10 +12,10 @@ namespace LaptopStore.Data.Mocks
             {
                 return new List<Category>
                 {
-                    new Category {id = 1, categoryName = "Ультрабуки", desc = "Ультратонкие ноутбуки"},
-                    new Category {id = 2, categoryName = "Трансформеры", desc = "Ноутбуки с сенсорным экраном, гибрид планшетного компьютера и ноутбука"},
-                    new Category {id = 3, categoryName = "Офисные", desc = "Ноутбики для учебы и работы"},
-                    new Category {id = 4, categoryName = "Игровые", desc = "Ноутбуки с производительными GPU и CPU"},
+                    new Category {categoryName = "Ultrathin", desc = "Ultrathin laptops"},
+                    new Category {categoryName = "Transformer", desc = "Touch screen laptops, tablet/laptop hybrid"},
+                    new Category {categoryName = "Office", desc = "Laptops for study and work"},
+                    new Category {categoryName = "Gaming", desc = "Laptops with powerful GPUs and CPUs"}
                 };
             }
         }

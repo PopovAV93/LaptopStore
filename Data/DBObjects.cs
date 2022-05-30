@@ -22,137 +22,137 @@ namespace LaptopStore.Data
                     {
                         name = "ROG Strix G15/17",
                         //categoryId = 4,
-                        Category = Categories["Игровые"],
+                        Category = Categories["Gaming"],
                         isAvailable = true,
                         isFavorite = true,
                         price = 3000,
                         imgUrl = "/Img/ROG Strix G15_17.png",
-                        shortDesc = "ROG Strix G15/17 подходит для широкого спектра задач.",
-                        longDesc = "Благодаря мощной конфигурации, которая включает в себя процессор AMD Ryzen 9 5900HX " +
-                                    "и видеокарту AMD Radeon RX 6800M, этот ноутбук подходит для широкого спектра задач. " +
-                                    "Оптимизированная система охлаждения гарантирует стабильную работу устройства под тяжелыми " +
-                                    "нагрузками, поэтому ROG Strix G15 позволит вам проявить все свое мастерство в любой игровой" +
-                                    " ситуации! Встроенная акустическая система ноутбука состоит из двух динамиков с " +
-                                    "интеллектуальным усилением, направленных непосредственно на пользователя. При подключении " +
-                                    "наушников она создаст фантастический эффект 5.1.2-канального звучания на базе технологии " +
-                                    "Dolby Atmos и позволит полностью погрузиться в то, что происходит на экране. Для повышения " +
-                                    "качества голосовой связи служит технология двухстороннего интеллектуального шумоподавления." +
-                                    " За длительное время автономной работы ноутбука отвечает аккумулятор емкостью 90 Вт·ч."
+                        shortDesc = "ROG Strix G15/17 is suitable for a wide range of tasks.",
+                        longDesc = "With a powerful configuration that includes an AMD Ryzen 9 5900HX processor " +
+                                    "and an AMD Radeon RX 6800M graphics card, this laptop is suitable for a wide range of tasks." +
+                                    "Optimized cooling system ensures stable operation of the device under heavy " +
+                                    "loads, so ROG Strix G15 will allow you to show all your skills in any game" +
+                                    " situations! The built-in speaker system of the laptop consists of two speakers with " +
+                                    "intelligent amplification aimed directly at the user. When connected " +
+                                    "headphones, it will create a fantastic 5.1.2-channel sound effect based on technology" +
+                                    "Dolby Atmos and will allow you to fully immerse yourself in what is happening on the screen. To enhance " +
+                                    "voice quality is served by two-way intelligent noise reduction technology." +
+                                    " The 90 Wh battery delivers long battery life."
                     },
                     new Laptop
                     {
                         name = "MSI MODERN 14 B10MW-294XRU",
                         //categoryId = 1,
-                        Category = Categories["Ультрабуки"],
+                        Category = Categories["Ultrathin"],
                         isAvailable = false,
                         isFavorite = true,
                         price = 666,
                         imgUrl = "/Img/MSI MODERN 14 B10MW-294XRU.jpg",
-                        shortDesc = "Нужен безотказный ассистент в работе? Внимание – он перед вами. Это ультрабук MSI MODERN 14 B10MW-294XRU.",
-                        longDesc = "Нужен безотказный ассистент в работе? Внимание – он перед вами. Это ультрабук MSI MODERN 14 B10MW-294XRU." +
-                                    " Его матовый 14-дюймовый по диагонали экран транслирует изображение с высоким (1920x1080 пикс.) разрешением. " +
-                                    "Благодаря процессору Intel Core i3 и SSD-диску на 256 ГБ он получил достойное быстродействие. " +
-                                    "Время функционирования модели без подключения к розетке достигает 10 ч. В сочетании с возможностью принимать " +
-                                    "интернет на высокой скорости благодаря Wi-Fi-модулю 5 (802.11ac) это говорит о том, что вы можете работать с ультрабуком " +
-                                    "в кафе или другом подходящем месте, не переживая об уровне заряда аккумулятора. Классический черный корпус лэптопа выполнен " +
-                                    "из пластика и металла. Для удобства работы с текстовыми файлами и таблицами в любой обстановке ультрабук " +
-                                    "MSI MODERN 14 B10MW-294XRU получил встроенную подсветку."
+                        shortDesc = "Do you need a trouble-free assistant at work? It is in front of you! This is MSI MODERN 14 B10MW-294XRU Ultrabook.",
+                        longDesc = "Do you need a trouble-free assistant at work? It is in front of you! This is MSI MODERN 14 B10MW-294XRU Ultrabook." +
+                                    "Its matte 14-inch screen displays a high resolution (1920x1080 pix.) image. " +
+                                    "Thanks to the Intel Core i3 processor and a 256 GB SSD, it got decent performance. " +
+                                    "The operating time of the model without connecting to a power outlet reaches 10 hours. In combination with the ability to receive " +
+                                    "Internet at high speed thanks to Wi-Fi module 5 (802.11ac) which means that you can work with an ultrabook" +
+                                    "in a cafe or other suitable place, without worrying about the battery level. The classic black laptop case is made" +
+                                    "made of plastic and metal. For the convenience of working with text files and tables in any environment, ultrabook " +
+                                    "MSI MODERN 14 B10MW-294XRU has a built-in backlight."
                     },
                     new Laptop
                     {
                         name = "Lenovo IdeaPad Flex 5 14ALC05",
                         //categoryId = 2,
-                        Category = Categories["Трансформеры"],
+                        Category = Categories["Transformer"],
                         isAvailable = false,
                         isFavorite = true,
                         price = 1050,
                         imgUrl = "/Img/Lenovo IdeaPad Flex 5 14ALC05.jpg",
-                        shortDesc = "Ноутбук IdeaPad Flex 5 с 14-дюймовым дисплеем, оснащенный мобильным процессором AMD Ryzen обеспечивает высокую " +
-                                    "производительность и широкие графические возможности в гибком устройстве",
-                        longDesc = "Ноутбук IdeaPad Flex 5 с 14-дюймовым дисплеем, оснащенный мобильным процессором AMD Ryzen обеспечивает высокую " +
-                                    "производительность и широкие графические возможности в гибком устройстве, которое вы сможете использовать именно так, как хочется вам. " +
-                                    "Тонкие рамки, обрамляющие экран IdeaPad Flex 5 со всех сторон, придают этому устройству стильный вид, а также расширяют " +
-                                    "рабочее пространство пользователей, позволяя им в полной мере наслаждаться качеством дисплея стандарта FHD."
+                        shortDesc = "IdeaPad Flex 5 14 inch laptop with AMD Ryzen mobile processor delivers high " +
+                                     "Performance and rich graphics in a flexible device",
+                        longDesc = "IdeaPad Flex 5 14 inch laptop with AMD Ryzen mobile processor delivers high " +
+                                     "Performance and rich graphics in a flexible device that you can use just the way you want." +
+                                     "The thin bezels that surround the IdeaPad Flex 5 screen on all sides give this device a stylish look and also expand" +
+                                     "users' workspace, allowing them to fully enjoy the quality of an FHD display."
                     },
                     new Laptop
                     {
                         name = "Irbis NB77",
                         //categoryId = 3,
-                        Category = Categories["Офисные"],
+                        Category = Categories["Office"],
                         isAvailable = true,
                         isFavorite = false,
                         price = 233,
                         imgUrl = "/Img/Irbis NB77.jpg",
-                        shortDesc = "Ноутбук Irbis NB77 обладает всем необходимым для удобной и продуктивной работы как в офисе, так и во время поездок.",
-                        longDesc = "Ноутбук Irbis NB77 обладает всем необходимым для удобной и продуктивной работы как в офисе, " +
-                                    "так и во время поездок. Он выполнен в корпусе с компактными размерами и весом 1.3 кг. " +
-                                    "Благодаря HD экрану диагональю 13.3 дюйма отображается реалистичная картинка с высокой " +
-                                    "детализацией и насыщенными цветами. Аудиосистема с двумя динамиками воспроизводит четкий звук."
+                        shortDesc = "The Irbis NB77 laptop has everything you need for convenient and productive work both in the office and while traveling.",
+                        longDesc = "The Irbis NB77 laptop has everything you need for convenient and productive work like in the office, " +
+                                     "and while traveling. It is made in a case with compact dimensions and a weight of 1.3 kg. " +
+                                     "Thanks to the 13.3-inch HD screen, a realistic picture is displayed with high " +
+                                     "detailed and rich colors. The audio system with two speakers reproduces a clear sound."
                     },
                     new Laptop
                     {
                         name = "HP Laptop 14s-fq0111ur",
                         //categoryId = 1,
-                        Category = Categories["Ультрабуки"],
+                        Category = Categories["Ultrathin"],
                         isAvailable = true,
                         isFavorite = false,
                         price = 566,
                         imgUrl = "/Img/HP Laptop 14s-fq0111ur.jpg",
-                        shortDesc = "Стильный, компактный ноутбук с тонкорамочным экраном и длительным временем работы от аккумулятора",
-                        longDesc = "Стильный, компактный ноутбук с тонкорамочным экраном и длительным временем работы от аккумулятора " +
-                                    "позволит вам всегда оставаться на связи. Надежный ноутбук HP с диагональю экрана 14 дюймов позволяет " +
-                                    "работать в браузере, стримить и быстро выполнять множество других задач. Стабильная продуктивность для " +
-                                    "работы и развлечений, где бы вы ни находились."
+                        shortDesc = "Stylish, compact laptop with thin bezels and long battery life",
+                        longDesc = "Stylish, compact laptop with thin bezels and long battery life" +
+                                     "allows you to always stay connected. A reliable HP laptop with a 14-inch screen allows you to " +
+                                     "work in the browser, stream and quickly perform many other tasks. Consistent productivity for " +
+                                     "work and play, wherever you are."
                     },
                     new Laptop
                     {
                         name = "Digma EVE 15 C407",
                         //categoryId = 3,
-                        Category = Categories["Офисные"],
+                        Category = Categories["Office"],
                         isAvailable = true,
                         isFavorite = false,
                         price = 333,
                         imgUrl = "/Img/Digma EVE 15 C407.jpg",
-                        shortDesc = "Digma EVE 15 C407 создан для тех, кто хочет получить надежное и производительное компьютерное устройство",
-                        longDesc = "Digma EVE 15 C407 создан для тех, кто хочет получить надежное и производительное компьютерное устройство " +
-                                    "с наиболее востребованным функционалом. Данная модель полностью удовлетворяет данные требования. " +
-                                    "Надежный накопитель предоставляет вам возможности для долговременного хранения необходимой виртуальной информации. " +
-                                    "Устройство оборудовано веб-камерой и микрофоном, благодаря которым вы сможете организовывать видеоконференции " +
-                                    "с партнерами по бизнесу и коллегами по работе."
+                        shortDesc = "Digma EVE 15 C407 is designed for those who want a reliable and productive computing device",
+                        longDesc = "Digma EVE 15 C407 is designed for those who want a reliable and productive computing device" +
+                                    "with the most requested functionality. This model fully satisfies these requirements. " +
+                                    "Reliable storage gives you long-term storage options for the virtual information you need. " +
+                                    "The device is equipped with a webcam and a microphone, thanks to which you can organize video conferences" +
+                                    "with business partners and work colleagues."
                     },
                     new Laptop
                     {
                         name = "ASUS Vivobook 13 Slate OLED T3300KA-LQ084W",
                         //categoryId = 2,
-                        Category = Categories["Трансформеры"],
+                        Category = Categories["Transformer"],
                         isAvailable = true,
                         isFavorite = true,
                         price = 1150,
                         imgUrl = "/Img/ASUS Vivobook 13 Slate OLED T3300KA-LQ084W.jfif",
-                        shortDesc = "Представляем Vivobook 13 Slate OLED – фантастический ноутбук-трансформер, созданный для мобильного стиля жизни.",
-                        longDesc = "Представляем Vivobook 13 Slate OLED – фантастический ноутбук-трансформер, созданный для мобильного стиля жизни. " +
-                                    "Он легко адаптируется ко всему, что бы ни делал его владелец, будь то работа или учеба, отдых или общение. " +
-                                    "Поддержка стилуса ASUS Pen 2.01 со сменными наконечниками разных типов придется по вкусу всем творческим умам, " +
-                                    "а любители развлечений непременно оценят качественное изображение на роскошном OLED-дисплее с технологией Dolby Vision, " +
-                                    "дополненное завораживающим звучанием встроенной аудиосистемы с пространственными эффектами Dolby Atmos."
+                        shortDesc = "The Vivobook 13 Slate OLED, a fantastic convertible laptop designed for the mobile lifestyle.",
+                        longDesc = "The Vivobook 13 Slate OLED is a fantastic convertible laptop designed for the mobile lifestyle." +
+                                    "He easily adapts to whatever his owner does, whether it's work or school, leisure or socializing. " +
+                                    "Support for ASUS Pen 2.01 with interchangeable nibs of different types will appeal to all creative minds, " +
+                                    "and entertainment lovers will appreciate the quality image on the luxurious OLED display with Dolby Vision technology, " +
+                                    "complemented by the mesmerizing sound of the built-in audio system with Dolby Atmos spatial effects."
                     },
                     new Laptop
                     {
                         name = "Acer Nitro 5 AN515-55-534C",
                         //categoryId = 4,
-                        Category = Categories["Игровые"],
+                        Category = Categories["Gaming"],
                         isAvailable = false,
                         isFavorite = true,
                         price = 1333,
                         imgUrl = "/Img/Acer Nitro 5 AN515-55-534C.jpg",
-                        shortDesc = "Ноутбук Acer Nitro 5 AN515-55-534C обладает мощной аппаратной конфигурацией, что делает его идеальным игровым решением.",
-                        longDesc = "Ноутбук Acer Nitro 5 AN515-55-534C обладает мощной аппаратной конфигурацией, что делает его идеальным игровым решением. " +
-                                    "Модель с диагональю экрана 15.6 дюймов использует технологию IPS, которая позволяет получить настолько реалистичное изображение, " +
-                                    "что вы грань между виртуальным миром и реальностью непроизвольно сотрется, а вы полностью погрузитесь в игровой процесс. " +
-                                    "Картинка приобретает разрешение 1920x1080, сохраняет четкость, естественные цвета и яркость. Онлайн-игры на этом аппарате " +
-                                    "не допустят сбоев в соединении, ведь за это отвечает модуль Wi-Fi. Вы не заметите несоответствия между вашими действиями " +
-                                    "и отображением графики на экране, поскольку устройство использует видеопроцессор GeForce RTX 3050, особенность которой в памяти 4 ГБ. " +
-                                    "Аппаратную мощь модели представляет модуль DDR4, взаимодействующий с процессором Intel Core i5 10300H."
+                        shortDesc = "The Acer Nitro 5 AN515-55-534C has a powerful hardware configuration that makes it the perfect gaming solution.",
+                        longDesc = "The Acer Nitro 5 AN515-55-534C has a powerful hardware configuration that makes it the perfect gaming solution." +
+                                    "The 15.6-inch model uses IPS technology, which allows you to get such a realistic image, " +
+                                    "that the line between the virtual world and reality will involuntarily be erased, and you will be completely immersed in the gameplay." +
+                                    "The picture acquires a resolution of 1920x1080, retains clarity, natural colors and brightness. Online games on this device" +
+                                    "will not allow connection failures, because the Wi-Fi module is responsible for this. You will not notice a discrepancy between your actions" +
+                                    "and display graphics on the screen, since the device uses the GeForce RTX 3050 video processor, which features 4 GB of memory. " +
+                                    "The hardware power of the model is represented by the DDR4 module interacting with the Intel Core i5 10300H processor."
                     }
                 );
             }
@@ -168,10 +168,10 @@ namespace LaptopStore.Data
                 {
                     var list = new Category[]
                     {
-                        new Category {categoryName = "Ультрабуки", desc = "Ультратонкие ноутбуки"},
-                        new Category {categoryName = "Трансформеры", desc = "Ноутбуки с сенсорным экраном, гибрид планшетного компьютера и ноутбука"},
-                        new Category {categoryName = "Офисные", desc = "Ноутбики для учебы и работы"},
-                        new Category {categoryName = "Игровые", desc = "Ноутбуки с производительными GPU и CPU"}
+                        new Category {categoryName = "Ultrathin", desc = "Ultrathin laptops"},
+                        new Category {categoryName = "Transformer", desc = "Touch screen laptops, tablet/laptop hybrid"},
+                        new Category {categoryName = "Office", desc = "Laptops for study and work"},
+                        new Category {categoryName = "Gaming", desc = "Laptops with powerful GPUs and CPUs"}
                     };
 
                     category = new Dictionary<string, Category>();

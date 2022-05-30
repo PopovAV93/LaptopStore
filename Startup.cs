@@ -69,6 +69,12 @@ namespace LaptopStore
             {
                 endpoints.MapRazorPages();
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllerRoute
+                (
+                    name: "", 
+                    pattern: "Laptops/{action}/{category?}",
+                    defaults: new { controller = "Laptops", action = "List" }
+                    );
             });
 
             using (var scope = app.ApplicationServices.CreateScope())

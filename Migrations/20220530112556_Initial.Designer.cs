@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LaptopStore.Migrations
 {
     [DbContext(typeof(AppDBContent))]
-    [Migration("20220529125043_CartItem")]
-    partial class CartItem
+    [Migration("20220530112556_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

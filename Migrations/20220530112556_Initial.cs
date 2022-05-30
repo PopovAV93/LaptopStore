@@ -48,6 +48,31 @@ namespace LaptopStore.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "CartItem",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    laptopid = table.Column<int>(type: "int", nullable: true),
+                    price = table.Column<int>(type: "int", nullable: false),
+                    CartId = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CartItem", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_CartItem_Laptop_laptopid",
+                        column: x => x.laptopid,
+                        principalTable: "Laptop",
+                        principalColumn: "id");
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CartItem_laptopid",
+                table: "CartItem",
+                column: "laptopid");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Laptop_categoryId",
                 table: "Laptop",
@@ -56,6 +81,9 @@ namespace LaptopStore.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "CartItem");
+
             migrationBuilder.DropTable(
                 name: "Laptop");
 
