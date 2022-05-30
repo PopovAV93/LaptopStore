@@ -11,6 +11,7 @@ namespace LaptopStore.Controllers
     {
         private readonly ILaptops _allLaptops;
         private readonly ILaptopCategories _allCategories;
+        
 
         public LaptopsController(ILaptops allLaptops, ILaptopCategories allCategories)
         {
@@ -23,43 +24,38 @@ namespace LaptopStore.Controllers
         public ViewResult List(string category)
         {
             
-            //string _category = category;
-            IEnumerable<Laptop> laptops;
-            string currCategory = category;
-
-            if (string.IsNullOrEmpty(category))
-            {
-                laptops = _allLaptops.getLaptops.OrderBy(i => i.id);
-            }
-            else
-            {
-                laptops = _allLaptops.getLaptops.Where(x => x.Category.categoryName.ToLower().Equals(category.ToLower())).OrderBy(i => i.id);
-
-                if (laptops.FirstOrDefault() == null)
-                {
-                    currCategory = null;
-                    laptops = _allLaptops.getLaptops.OrderBy(i => i.id);
-                }
-                else
-                {
-                    currCategory = laptops.FirstOrDefault().Category.categoryName;
-                }
-            }
+            IEnumerable<Laptop> laptops = GetLaptopsByCategory(category);
+            string currCategory = GetCategory(laptops);
 
             var laptopObj = new LaptopListViewModel
             {
-                allLaptops = laptops,
+                allLaptops = laptops ?? _allLaptops.getLaptops.OrderBy(i => i.id),
                 currCategory = currCategory
             };
-
-
-            //LaptopListViewModel obj = new LaptopListViewModel();
-            //obj.allLaptops = _allLaptops.getLaptops;
-            //obj.currCategory = "Laptops";
 
             ViewBag.Title = "Laptops";
             return View(laptopObj);
         }
-        
+
+        private IEnumerable<Laptop> GetLaptopsByCategory(string category)
+        {
+            IEnumerable<Laptop> laptops = null;
+            if (!string.IsNullOrEmpty(category))
+            {
+                laptops = _allLaptops.getLaptops.Where(x => x.Category.categoryName.ToLower().Equals(category.ToLower())).OrderBy(i => i.id);
+                if (laptops.FirstOrDefault() == null)
+                {
+                    laptops = null;
+                }
+            }
+            
+            return laptops;
+        }
+
+        private string GetCategory(IEnumerable<Laptop> laptops)
+        {
+            return laptops != null ? laptops.FirstOrDefault().Category.categoryName : null;
+        }
+
     }
 }
