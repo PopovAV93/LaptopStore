@@ -9,7 +9,7 @@ namespace LaptopStore.Controllers
         
         public ViewResult Index()
         {
-            var privacyPolicy = new PrivacyViewModel { privacy = "Use this page to detail your site's Privacy policy." };
+            var privacyPolicy = new Privacy { privacy = "Use this page to detail your site's Privacy policy." };
             return View(privacyPolicy);
         }
     }

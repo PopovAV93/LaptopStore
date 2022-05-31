@@ -104,6 +104,71 @@ namespace LaptopStore.Migrations
                     b.ToTable("Laptop");
                 });
 
+            modelBuilder.Entity("LaptopStore.Data.Models.Order", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<string>("address")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("email")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("lastName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<DateTime>("orderTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("phoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Order");
+                });
+
+            modelBuilder.Entity("LaptopStore.Data.Models.OrderDetail", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<int>("laptopId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("orderId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("price")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("laptopId");
+
+                    b.HasIndex("orderId");
+
+                    b.ToTable("OrderDetail");
+                });
+
             modelBuilder.Entity("LaptopStore.Data.Models.CartItem", b =>
                 {
                     b.HasOne("LaptopStore.Data.Models.Laptop", "laptop")
@@ -124,9 +189,33 @@ namespace LaptopStore.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("LaptopStore.Data.Models.OrderDetail", b =>
+                {
+                    b.HasOne("LaptopStore.Data.Models.Laptop", "laptop")
+                        .WithMany()
+                        .HasForeignKey("laptopId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LaptopStore.Data.Models.Order", "order")
+                        .WithMany("orderDetails")
+                        .HasForeignKey("orderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("laptop");
+
+                    b.Navigation("order");
+                });
+
             modelBuilder.Entity("LaptopStore.Data.Models.Category", b =>
                 {
                     b.Navigation("laptops");
+                });
+
+            modelBuilder.Entity("LaptopStore.Data.Models.Order", b =>
+                {
+                    b.Navigation("orderDetails");
                 });
 #pragma warning restore 612, 618
         }

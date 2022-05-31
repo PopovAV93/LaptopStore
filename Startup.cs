@@ -36,6 +36,7 @@ namespace LaptopStore
             services.AddRazorPages();
             services.AddTransient<ILaptops, LaptopRepository>();
             services.AddTransient<ILaptopCategories, CategoryRepository>();
+            services.AddTransient<IOrders, OrderRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(c => Cart.getCart(c));
             services.AddMvc();

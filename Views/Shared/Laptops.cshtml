@@ -4,5 +4,12 @@
 <h2>@Model.name</h2>
 <p>@Model.shortDesc</p>
 <p>Price: @Model.price.ToString("c", System.Globalization.CultureInfo.GetCultureInfo("en-us"))</p>
-<p><a class="btn btn-warning" href="#">More</a></p>
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <a class="btn btn-primary btn-lg btn-block">More</a>
+        </div>
+        <div class="col-md-8 mb-3">
+            <a class="btn btn-warning btn-lg btn-block" asp-controller="Cart" asp-action="addToCart" asp-route-id="@Model.id">Add to cart</a>
+        </div>
+    </div>
 </div>
