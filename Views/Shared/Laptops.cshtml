@@ -1,15 +1,19 @@
 ﻿@model Laptop
-<div class="col-lg-4">
-<img class="img-thumbnail" src="@Model.imgUrl" alt="@Model.name"/>
-<h2>@Model.name</h2>
-<p>@Model.shortDesc</p>
-<p>Price: @Model.price.ToString("c", System.Globalization.CultureInfo.GetCultureInfo("en-us"))</p>
-    <div class="row">
-        <div class="col-md-4 mb-3">
-            <a class="btn btn-primary btn-lg btn-block">More</a>
+<div class="col-md-4">
+    <div class="card mb-4 box-shadow justify-content-md-between" style="height:95%; width: 100%; display: block;">
+        <img class="card-img-top" alt="@Model.name [100%x260]" style="height: 50%; width: 100%; display: block;" src="@Model.imgUrl" data-holder-rendered="true">
+        <div class="card-body" style="height: 40%; width: 100%; display: block;">
+            <h2>@Model.name</h2>
+            <p class="card-text">@Model.shortDesc</p>
         </div>
-        <div class="col-md-8 mb-3">
-            <a class="btn btn-warning btn-lg btn-block" asp-controller="Cart" asp-action="addToCart" asp-route-id="@Model.id">Add to cart</a>
+        <div class="card-footer align-bottom" style="height: 10%; width: 100%; display: block;">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <a class="btn btn-sm btn-outline-secondary">More</a>
+                    <a class="btn btn-sm btn-outline-warning" asp-controller="Cart" asp-action="addToCart" asp-route-id="@Model.id">Add to cart</a>
+                </div>
+                <h5 class="text-muted">Price: @Model.price.ToString("c", System.Globalization.CultureInfo.GetCultureInfo("en-us"))</h5>
+            </div>
         </div>
     </div>
 </div>

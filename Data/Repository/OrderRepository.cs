@@ -19,8 +19,6 @@ namespace LaptopStore.Data.Repository
         public void createOrder(Order order)
         {
             order.orderTime = DateTime.Now;
-            //Order lastOrder = appDBContent.Order.OrderByDescending(x => x.id).ToList().LastOrDefault();
-           // order.id = lastOrder != null ? lastOrder.id + 1 : 1;
             appDBContent.Order.Add(order);
             appDBContent.SaveChanges();
 

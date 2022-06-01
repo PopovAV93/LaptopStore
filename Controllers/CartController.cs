@@ -21,6 +21,7 @@ namespace LaptopStore.Controllers
         {
             var items = _cart.getCartItems();
             _cart.ListCartItems = items;
+            _cart.itemsCount = items.Count();
 
             var obj = new CartViewModel
             {
@@ -36,6 +37,17 @@ namespace LaptopStore.Controllers
             if(item != null)
             {
                 _cart.addToCart(item);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public RedirectToActionResult deleteFromCart(int id)
+        {
+            var item = _cart.getCartItems().Single(i => i.id == id);
+            if (item != null)
+            {
+                _cart.deleteFromCart(item);
             }
 
             return RedirectToAction("Index");

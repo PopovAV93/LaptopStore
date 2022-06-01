@@ -16,6 +16,7 @@ namespace LaptopStore.Data.Models
         }
         public string CartId { get; set; }
         public List<CartItem> ListCartItems { get; set; }
+        public int itemsCount { get; set; }
 
         public static Cart getCart(IServiceProvider services)
         {
@@ -24,12 +25,18 @@ namespace LaptopStore.Data.Models
             string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
 
             session.SetString("CartId", cartId);
-            return new Cart(context) { CartId = cartId};
+            return new Cart(context) { CartId = cartId };
         }
 
         public void addToCart(Laptop laptop)
         {
             this.appDBContent.CartItem.Add(new CartItem { CartId = CartId, laptop = laptop, price = laptop.price });
+            this.appDBContent.SaveChanges();
+        }
+
+        public void deleteFromCart(CartItem cartItem)
+        {
+            this.appDBContent.CartItem.Remove(cartItem);
             this.appDBContent.SaveChanges();
         }
 

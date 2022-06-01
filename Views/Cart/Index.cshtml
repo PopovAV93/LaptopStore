@@ -1,12 +1,31 @@
 ﻿@model CartViewModel
-<div class="container">
-    @foreach (var el in Model.cart.ListCartItems)
-    {
-        <div class="aler alert-warning mt-3">
-            <b>Laptop: </b> @el.laptop.name<br/>
-            <b>Price: </b> @el.price.ToString("c", System.Globalization.CultureInfo.GetCultureInfo("en-us"))
-        </div>
-    }
-    <hr/>
-    <a class="btn btn-warning btn-lg" asp-controller="Order" asp-action="Checkout">Make order</a>
-</div>
+<body onload="onLoad()">
+    <div class="container">
+        @if (Model.cart.itemsCount == 0)
+        {
+            <div class="aler alert-warning mt-3">
+                <b>Your shopping cart is empty!</b>
+            </div>
+        }
+        else
+        {
+            foreach (var el in Model.cart.ListCartItems)
+            {
+                <div class="aler alert-warning mt-3">
+                    <b>Laptop: </b> @el.laptop.name<br/>
+                    <b>Price: </b> @el.price.ToString("c", System.Globalization.CultureInfo.GetCultureInfo("en-us"))<br/>
+                    <a class="btn alert-danger" asp-controller="Cart" asp-action="deleteFromCart" asp-route-id="@el.id">Delete from cart</a>
+                </div>
+            }
+        }
+        <hr/>
+        <a class="btn btn-warning btn-lg" id="btnMakeOrder" asp-controller="Order" asp-action="Checkout" hidden="hidden" style="cursor:pointer">Make order</a>
+    </div>
+    <script>
+            function onLoad() {
+                if (@Model.cart.itemsCount != 0) {
+                    document.getElementById("btnMakeOrder").removeAttribute("hidden");
+                }
+            }
+    </script>
+</body>
