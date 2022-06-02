@@ -37,6 +37,16 @@ namespace LaptopStore.Controllers
             return View(laptopObj);
         }
 
+        [Route("Laptops/LaptopDetails")]
+        public ViewResult LaptopDetails(int id)
+        {
+
+            Laptop laptop = _allLaptops.getObjectLaptop(id);
+
+            ViewBag.Title = "Details";
+            return View(laptop);
+        }
+
         private IEnumerable<Laptop> GetLaptopsByCategory(string category)
         {
             IEnumerable<Laptop> laptops = null;
