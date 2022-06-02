@@ -8,18 +8,18 @@ namespace LaptopStore.Data.Models
     public class Order
     {
         [BindNever]
-        public int id { get; set; }
+        public long id { get; set; }
 
         [StringLength(30)]
-        [Required(ErrorMessage = "Name length must not exceed 30 characters.")]
+        [Required(ErrorMessage = "name length must not exceed 30 characters.")]
         public string name { get; set; }
 
         [StringLength(30)]
-        [Required(ErrorMessage = "Last Name length must not exceed 30 characters.")] 
+        [Required(ErrorMessage = "Last name length must not exceed 30 characters.")] 
         public string lastName { get; set; }
 
         [StringLength(100)]
-        [Required(ErrorMessage = "Address length must not exceed 100 characters.")] 
+        [Required(ErrorMessage = "address length must not exceed 100 characters.")] 
         public string address { get; set; }
         
         [Phone]

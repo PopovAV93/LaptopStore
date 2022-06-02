@@ -7,6 +7,6 @@ namespace LaptopStore.Data.Interfaces
     {
         IEnumerable<Laptop> getLaptops { get; }
         IEnumerable<Laptop> getFavLaptops { get; }
-        Laptop getObjectLaptop(int laptopId);
+        Laptop getObjectLaptop(long laptopId);
     }
 }

@@ -38,7 +38,7 @@ namespace LaptopStore.Controllers
         }
 
         [Route("Laptops/LaptopDetails")]
-        public ViewResult LaptopDetails(int id)
+        public ViewResult LaptopDetails(long id)
         {
 
             Laptop laptop = _allLaptops.getObjectLaptop(id);
