@@ -19,7 +19,7 @@ namespace LaptopStore.Data.Repository
         public IEnumerable<Laptop> getFavLaptops => 
             appDBContent.Laptop.Where(p => p.isFavorite).Include(l => l.Category);
 
-        public Laptop getObjectLaptop(int laptopId) => 
+        public Laptop getObjectLaptop(long laptopId) => 
             appDBContent.Laptop.FirstOrDefault(p => p.id == laptopId);
     }
 }

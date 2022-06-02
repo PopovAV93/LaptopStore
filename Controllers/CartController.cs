@@ -31,7 +31,7 @@ namespace LaptopStore.Controllers
             return View(obj);
         }
 
-        public RedirectToActionResult addToCart(int id)
+        public RedirectToActionResult addToCart(long id)
         {
             var item = _laptopRepository.getLaptops.FirstOrDefault(i => i.id == id);
             if(item != null)
@@ -42,7 +42,7 @@ namespace LaptopStore.Controllers
             return RedirectToAction("Index");
         }
 
-        public RedirectToActionResult deleteFromCart(int id)
+        public RedirectToActionResult deleteFromCart(long id)
         {
             var item = _cart.getCartItems().Single(i => i.id == id);
             if (item != null)

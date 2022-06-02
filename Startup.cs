@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ using System.Threading.Tasks;
 using LaptopStore.Data.Repository;
 using Microsoft.AspNetCore.Http;
 using LaptopStore.Data.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace LaptopStore
 {
@@ -30,6 +32,13 @@ namespace LaptopStore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = new PathString("/Account/Login");
+                    options.AccessDeniedPath = new PathString("/Account/Login");
+                });
+            
             string connectionString = _confString.GetConnectionString("DefaultConnection");
             services.AddDbContext<AppDBContent>(builder => builder.UseSqlServer(connectionString,
                 b => b.MigrationsAssembly("LaptopStore")));

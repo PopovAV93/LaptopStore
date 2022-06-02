@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NLog.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,14 @@ namespace LaptopStore
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+                .ConfigureLogging(webBuilder =>
+                {
+                    webBuilder.ClearProviders();
+                    webBuilder.SetMinimumLevel(LogLevel.Trace);
+                }).ConfigureWebHost(builder => builder.UseNLog());
+                
+
+        
     }
 }

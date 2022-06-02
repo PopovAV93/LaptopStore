@@ -157,7 +157,7 @@ namespace LaptopStore.Data.Mocks
 
         public IEnumerable<Laptop> getFavLaptops { get; set; }
 
-        public Laptop getObjectLaptop(int laptopId)
+        public Laptop getObjectLaptop(long laptopId)
         {
             throw new System.NotImplementedException();
         }
