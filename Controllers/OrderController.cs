@@ -27,12 +27,12 @@ namespace LaptopStore.Controllers
 
             if(cart.ListCartItems.Count == 0)
             {
-                ModelState.AddModelError("", "Your shopping cart must contain items");
+                ModelState.AddModelError("", "Your shopping _cart must contain items");
             }
 
             if (ModelState.IsValid)
             {
-                orders.createOrder(order);
+                orders.Create(order);
                 return RedirectToAction("Complete");
             }
 

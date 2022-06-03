@@ -3,23 +3,47 @@ using LaptopStore.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace LaptopStore.Data.Repository
 {
     public class LaptopRepository : ILaptops
     {
-        private readonly AppDBContent appDBContent;
-        public LaptopRepository(AppDBContent appDBContent)
+        private readonly AppDBContent _db;
+        public LaptopRepository(AppDBContent db)
         {
-            this.appDBContent = appDBContent;
+            this._db = db;
         }
 
-        public IEnumerable<Laptop> getLaptops => appDBContent.Laptop.Include(l => l.Category);
+        public IQueryable<Laptop> GetFavLaptops() => 
+            _db.Laptops.Where(p => p.isFavorite);
 
-        public IEnumerable<Laptop> getFavLaptops => 
-            appDBContent.Laptop.Where(p => p.isFavorite).Include(l => l.Category);
+        public IQueryable<Laptop> GetAll()
+        {
+            return _db.Laptops;
+        }
 
-        public Laptop getObjectLaptop(long laptopId) => 
-            appDBContent.Laptop.FirstOrDefault(p => p.id == laptopId);
+        public IQueryable<Laptop> GetLaptopsByCategory(Category category)
+        {
+            return _db.Laptops.Where(c => c.Category == category);
+        }
+
+        public Laptop GetObjectLaptop(long laptopId) =>
+            _db.Laptops.FirstOrDefault(p => p.id == laptopId);
+
+        public Task Create(Laptop entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task Delete(Laptop entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<Laptop> Update(Laptop entity)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

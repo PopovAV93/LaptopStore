@@ -30,19 +30,19 @@ namespace LaptopStore.Data.Models
 
         public void addToCart(Laptop laptop)
         {
-            this.appDBContent.CartItem.Add(new CartItem { CartId = CartId, laptop = laptop, price = laptop.price });
+            this.appDBContent.CartItems.Add(new CartItem { CartId = CartId, laptop = laptop, price = laptop.price });
             this.appDBContent.SaveChanges();
         }
 
         public void deleteFromCart(CartItem cartItem)
         {
-            this.appDBContent.CartItem.Remove(cartItem);
+            this.appDBContent.CartItems.Remove(cartItem);
             this.appDBContent.SaveChanges();
         }
 
         public List<CartItem> getCartItems()
         {
-            return this.appDBContent.CartItem.Where(c => c.CartId == CartId).Include(s => s.laptop).ToList();
+            return this.appDBContent.CartItems.Where(c => c.CartId == CartId).Include(s => s.laptop).ToList();
         }
     }
 }

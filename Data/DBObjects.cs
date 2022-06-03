@@ -10,11 +10,11 @@ namespace LaptopStore.Data
     {
         public static void Initial(AppDBContent content)
         {
-            if (!content.Category.Any())
+            if (!content.Categories.Any())
             {
-                content.Category.AddRange(Categories.Select(c => c.Value));
+                content.Categories.AddRange(Categories.Select(c => c.Value));
             }
-            if (!content.Laptop.Any())
+            if (!content.Laptops.Any())
             {
                 content.AddRange
                 (

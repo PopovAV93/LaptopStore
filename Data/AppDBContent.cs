@@ -10,13 +10,13 @@ namespace LaptopStore.Data
             Database.EnsureCreated();
         }
 
-        public DbSet<Laptop> Laptop { get; set; }
-        public DbSet<Category> Category { get; set; }
+        public DbSet<Laptop> Laptops { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Profile> Profiles { get; set; }
-        public DbSet<CartItem> CartItem { get; set; }
-        public DbSet<Order> Order { get; set; }
-        public DbSet<OrderDetail> OrderDetail { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
 
     }
 }

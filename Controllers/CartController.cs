@@ -33,7 +33,7 @@ namespace LaptopStore.Controllers
 
         public RedirectToActionResult addToCart(long id)
         {
-            var item = _laptopRepository.getLaptops.FirstOrDefault(i => i.id == id);
+            var item = _laptopRepository.GetAll().Single(i => i.id == id);
             if(item != null)
             {
                 _cart.addToCart(item);

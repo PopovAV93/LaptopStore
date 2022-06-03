@@ -1,10 +1,12 @@
 ﻿using LaptopStore.Data.Interfaces;
 using LaptopStore.Data.Models;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace LaptopStore.Data.Mocks
 {
-    public class MockLaptopCategories : ILaptopCategories
+    public class MockLaptopCategories : IBaseRepository<Category>
     {
         public IEnumerable<Category> AllCategories 
         {
@@ -18,6 +20,26 @@ namespace LaptopStore.Data.Mocks
                     new Category {categoryName = "Gaming", desc = "Laptops with powerful GPUs and CPUs"}
                 };
             }
+        }
+
+        public Task Create(Category entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task Delete(Category entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IQueryable<Category> GetAll()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<Category> Update(Category entity)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

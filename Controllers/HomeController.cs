@@ -14,7 +14,7 @@ namespace LaptopStore.Controllers
         }
         public ViewResult Index()
         {
-            var homeLaptops = new HomeViewModel { favLaptops = _laptopRepository.getFavLaptops };
+            var homeLaptops = new HomeViewModel { favLaptops = _laptopRepository.GetFavLaptops() };
             return View(homeLaptops);
         }
     }

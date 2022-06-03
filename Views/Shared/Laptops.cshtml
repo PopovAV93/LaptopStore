@@ -1,10 +1,10 @@
 ﻿@model Laptop
-<div class="col-md-4">
-    <div class="card mb-4 box-shadow justify-content-md-between" style="height:95%; width: 100%; display: block;">
+<div class="col-md-4" style="min-width:380px;">
+    <div class="card mb-3 box-shadow" style="height:95%; min-width:350px; display: block;">
         <a asp-controller="Laptops" asp-action="LaptopDetails" asp-route-id="@Model.id">
-            <img class="card-link" alt="@Model.name [100%x260]"  style="height: 50%; width: 100%; display: block;" src="@Model.imgUrl" data-holder-rendered="true">
+            <img class="card-link" alt="@Model.name [100%x260]"  style="height: 40%; width: 100%; display: block;" src="@Model.imgUrl" data-holder-rendered="true">
         </a>
-        <div class="card-body" style="height: 40%; width: 100%; display: block;" >
+        <div class="card-body" style="height: 50%; width: 100%; display: block;" >
             <h2>@Model.name</h2>
             <p class="card-text">@Model.shortDesc</p>
         </div>

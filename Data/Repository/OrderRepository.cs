@@ -2,27 +2,28 @@
 using LaptopStore.Data.Models;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace LaptopStore.Data.Repository
 {
     public class OrderRepository : IOrders
     {
-        private readonly AppDBContent appDBContent;
-        private readonly Cart cart;
+        private readonly AppDBContent _db;
+        private readonly Cart _cart;
 
-        public OrderRepository(AppDBContent appDBContent, Cart cart)
+        public OrderRepository(AppDBContent db, Cart cart)
         {
-            this.appDBContent = appDBContent;
-            this.cart = cart;
+            this._db = db;
+            this._cart = cart;
         }
 
-        public void createOrder(Order order)
+        public async Task Create(Order order)
         {
             order.orderTime = DateTime.Now;
-            appDBContent.Order.Add(order);
-            appDBContent.SaveChanges();
+            await _db.Orders.AddAsync(order);
+            await _db.SaveChangesAsync();
 
-            var items = cart.ListCartItems;
+            var items = _cart.ListCartItems;
 
             foreach (var el in items)
             {
@@ -32,9 +33,24 @@ namespace LaptopStore.Data.Repository
                     orderId = order.id,
                     price = el.laptop.price
                 };
-                appDBContent.OrderDetail.Add(orderDetail);
+                _db.OrderDetails.Add(orderDetail);
             }
-            appDBContent.SaveChanges();
+            await _db.SaveChangesAsync();
+        }
+
+        public Task Delete(Order entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<Order> GetAll()
+        {
+            return _db.Orders;
+        }
+
+        public Task<Order> Update(Order entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

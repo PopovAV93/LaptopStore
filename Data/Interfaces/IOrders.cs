@@ -2,8 +2,7 @@
 
 namespace LaptopStore.Data.Interfaces
 {
-    public interface IOrders
+    public interface IOrders : IBaseRepository<Order>
     {
-        void createOrder(Order order);
     }
 }

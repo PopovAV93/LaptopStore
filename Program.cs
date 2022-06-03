@@ -27,9 +27,7 @@ namespace LaptopStore
                 {
                     webBuilder.ClearProviders();
                     webBuilder.SetMinimumLevel(LogLevel.Trace);
-                }).ConfigureWebHost(builder => builder.UseNLog());
-                
-
-        
+                    webBuilder.AddNLog("nlog.config");
+                }).UseNLog();
     }
 }

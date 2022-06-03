@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NLog.Web;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,9 @@ using LaptopStore.Data.Repository;
 using Microsoft.AspNetCore.Http;
 using LaptopStore.Data.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using NLog;
+using NLog.Config;
+using NLog.Extensions.Logging;
 
 namespace LaptopStore
 {
@@ -32,11 +36,13 @@ namespace LaptopStore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddLogging(builder => builder.AddNLogWeb("nlog.config"));
+            
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
-                    options.LoginPath = new PathString("/Account/Login");
-                    options.AccessDeniedPath = new PathString("/Account/Login");
+                    options.LoginPath = new PathString("/ViewModels/Account/Login");
+                    options.AccessDeniedPath = new PathString("/ViewModels/Account/Login");
                 });
             
             string connectionString = _confString.GetConnectionString("DefaultConnection");
@@ -44,9 +50,15 @@ namespace LaptopStore
                 b => b.MigrationsAssembly("LaptopStore")));
             services.AddRazorPages();
             services.AddTransient<ILaptops, LaptopRepository>();
-            services.AddTransient<ILaptopCategories, CategoryRepository>();
-            services.AddTransient<IOrders, OrderRepository>();
+            services.AddTransient<ICategory, CategoryRepository>();
+            
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IBaseRepository<User>, UserRepository>();
+            services.AddScoped<IBaseRepository<Profile>, ProfileRepository>();
+            services.AddScoped<IOrders, OrderRepository>();
+            //services.AddScoped<IAccountService, AccountService>();
+            //services.AddScoped<IProfileService, ProfileService>();
+            //services.AddScoped<IUserService, UserService>();
             services.AddScoped(c => Cart.getCart(c));
             services.AddMvc();
             services.AddMemoryCache();
@@ -68,13 +80,22 @@ namespace LaptopStore
                 app.UseHsts();
             }
             */
-            
+
+            if (!env.IsDevelopment())
+            {
+                app.UseExceptionHandler("/Pages/Error");
+                app.UseHsts();
+            }
+
+            //app.UseHttpLogging();
+            //app.UseHttpLogging();
             app.UseHttpsRedirection();
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
             app.UseRouting();
             app.UseAuthorization();
+            app.UseAuthentication();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();

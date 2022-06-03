@@ -1,12 +1,13 @@
 ﻿using LaptopStore.Data.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LaptopStore.Data.Interfaces
 {
-    public interface ILaptops
+    public interface ILaptops : IBaseRepository<Laptop>
     {
-        IEnumerable<Laptop> getLaptops { get; }
-        IEnumerable<Laptop> getFavLaptops { get; }
-        Laptop getObjectLaptop(long laptopId);
+        IQueryable<Laptop> GetFavLaptops();
+        Laptop GetObjectLaptop(long laptopId);
+        IQueryable<Laptop> GetLaptopsByCategory(Category category);
     }
 }
