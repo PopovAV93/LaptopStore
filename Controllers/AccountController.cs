@@ -19,7 +19,7 @@ namespace LaptopStore.Controllers
         }
 
         [HttpGet]
-        public IActionResult Register() => View(new LoginViewModel());
+        public IActionResult Register() => View(new RegisterViewModel());
 
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
