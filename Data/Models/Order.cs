@@ -11,11 +11,11 @@ namespace LaptopStore.Data.Models
         public long id { get; set; }
 
         [StringLength(30)]
-        [Required(ErrorMessage = "name length must not exceed 30 characters.")]
-        public string name { get; set; }
+        [Required(ErrorMessage = "firstName length must not exceed 30 characters.")]
+        public string firstName { get; set; }
 
         [StringLength(30)]
-        [Required(ErrorMessage = "Last name length must not exceed 30 characters.")] 
+        [Required(ErrorMessage = "Last firstName length must not exceed 30 characters.")] 
         public string lastName { get; set; }
 
         [StringLength(100)]

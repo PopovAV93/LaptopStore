@@ -3,10 +3,14 @@
     public class Profile
     {
         public long id { get; set; }
-        
+
+        public string firstName { get; set; }
+
+        public string lastName { get; set; }
+
         public string address { get; set; }
         
-        public short age { get; set; }
+        public short? age { get; set; }
 
         public long userId { get; set; }
         

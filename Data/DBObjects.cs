@@ -12,7 +12,7 @@ namespace LaptopStore.Data
         {
             if (!content.Categories.Any())
             {
-                content.Categories.AddRange(Categories.Select(c => c.Value));
+                content.Categories.AddRange(Categories.Values);
             }
             if (!content.Laptops.Any())
             {
@@ -156,7 +156,6 @@ namespace LaptopStore.Data
                     }
                 );
             }
-
             content.SaveChanges();
         }
 

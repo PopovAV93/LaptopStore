@@ -5,7 +5,7 @@ using LaptopStore.ViewModels;
 
 namespace LaptopStore.Data.Interfaces
 {
-    public interface IUsers
+    public interface IUsers 
     {
         Task<BaseResponse<IEnumerable<UserViewModel>>> GetUsers();
     }

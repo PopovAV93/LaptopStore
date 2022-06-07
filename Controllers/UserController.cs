@@ -6,16 +6,16 @@ namespace LaptopStore.Controllers
 {
     public class UserController : Controller
     {
-        private readonly IUsers _userService;
+        private readonly IUsers _users;
 
-        public UserController(IUsers userService)
+        public UserController(IUsers users)
         {
-            _userService = userService;
+            _users = users;
         }
-
+        
         public async Task<IActionResult> GetUsers()
         {
-            var response = await _userService.GetUsers();
+            var response = await _users.GetUsers();
             if (response.StatusCode == Data.Enum.StatusCode.OK)
             {
                 return View(response.Data);

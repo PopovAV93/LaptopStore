@@ -7,7 +7,7 @@ namespace LaptopStore.Data
     {
         public AppDBContent(DbContextOptions<AppDBContent> options) : base(options) 
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
 
         public DbSet<Laptop> Laptops { get; set; }

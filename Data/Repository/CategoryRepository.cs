@@ -14,9 +14,9 @@ namespace LaptopStore.Data.Repository
             this._db = db;
         }
 
-        public async Task Create(Category entity)
+        public async Task Create(Category category)
         {
-            await _db.Categories.AddAsync(entity);
+            await _db.Categories.AddAsync(category);
             await _db.SaveChangesAsync();
         }
 
@@ -25,12 +25,12 @@ namespace LaptopStore.Data.Repository
             return _db.Categories;
         }
 
-        public Task Delete(Category entity)
+        public Task Delete(Category category)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<Category> Update(Category entity)
+        public Task<Category> Update(Category category)
         {
             throw new System.NotImplementedException();
         }

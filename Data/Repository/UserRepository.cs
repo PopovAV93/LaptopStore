@@ -19,24 +19,24 @@ namespace LaptopStore.Data.Repository
             return _db.Users;
         }
 
-        public async Task Delete(User entity)
+        public async Task Delete(User user)
         {
-            _db.Users.Remove(entity);
+            _db.Users.Remove(user);
             await _db.SaveChangesAsync();
         }
 
-        public async Task Create(User entity)
+        public async Task Create(User user)
         {
-            await _db.Users.AddAsync(entity);
+            await _db.Users.AddAsync(user);
             await _db.SaveChangesAsync();
         }
 
-        public async Task<User> Update(User entity)
+        public async Task<User> Update(User user)
         {
-            _db.Users.Update(entity);
+            _db.Users.Update(user);
             await _db.SaveChangesAsync();
 
-            return entity;
+            return user;
         }
     }
 }
