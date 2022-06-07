@@ -31,9 +31,10 @@ namespace LaptopStore.Data.Repository
         public Laptop GetObjectLaptop(long laptopId) =>
             _db.Laptops.FirstOrDefault(p => p.id == laptopId);
 
-        public Task Create(Laptop entity)
+        public async Task Create(Laptop laptop)
         {
-            throw new System.NotImplementedException();
+            await _db.Laptops.AddAsync(laptop);
+            await _db.SaveChangesAsync();
         }
 
         public Task Delete(Laptop entity)

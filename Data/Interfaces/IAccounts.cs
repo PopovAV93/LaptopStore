@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using LaptopStore.Data.Response;
-using LaptopStore.ViewModels.Account;
+using LaptopStore.ViewModels;
 
 namespace LaptopStore.Data.Interfaces
 {

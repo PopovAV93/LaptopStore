@@ -14,9 +14,9 @@ namespace LaptopStore.Data.Repository
             _db = db;
         }
 
-        public async Task Create(Profile entity)
+        public async Task Create(Profile profile)
         {
-            await _db.Profiles.AddAsync(entity);
+            await _db.Profiles.AddAsync(profile);
             await _db.SaveChangesAsync();
         }
 

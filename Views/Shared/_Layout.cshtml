@@ -1,5 +1,46 @@
-﻿<!DOCTYPE html>
+﻿@using LaptopStore.ViewModels
+<!DOCTYPE html>
 <html lang="en">
+
+    <div class="modal fade" id="signIn">
+        <div class="modal-dialog">
+            <div class="modal-content" id="login">
+                <div class="face front">
+                    <div class="card-body">
+                        <!-- Header -->
+                        <div class="form-header primary-color">
+                            <h3 class="font-weight-500 my-2 py-1"><i class="fas fa-sign-in-alt"></i> Log in</h3>
+                        </div>
+                        @Html.Partial("Account/Login", new LoginViewModel())
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between">
+                            <a type="button" tabIndex="-1" data-card="my-card" 
+                                onclick="toRegister()">create account</a>
+                            <a href="#" class="grey-text" tabIndex="-2">forgot password?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-content" id="register" hidden="hidden">
+                <div class="face back">
+                    <div class="card-body">
+                        <!-- Header -->
+                        <div class="form-header primary-color">
+                            <h3 class="font-weight-500 my-2 py-1"><i class="fas fa-plus"></i> Create Account</h3>
+                        </div>
+                        @Html.Partial("Account/Register", new RegisterViewModel())
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-end">
+                            <a type="button" data-card="my-card" tabIndex="-3" onclick="toLogin()">back to login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,12 +59,30 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav ml-auto">
-                        <li class="my-2 my-md-0 mr-md-3">
-                            <a class="btn btn-outline-primary" asp-controller="" asp-action="" asp-route-id="">Sign up</a>
-                        </li>
-                        <li class="my-2 my-md-0 mr-md-3">
-                            <a class="btn btn-outline-warning" asp-controller="Cart" asp-action="Index">Cart</a>
-                        </li>
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li class="my-2 my-md-0 mr-md-3">
+                                <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#singUp" 
+                                    onclick="$('#signIn').modal('show')">Sign in</button> 
+                            </li>
+                        } 
+                        else
+                        {
+                            <li class="my-2 my-md-0 mr-md-3">
+                                <a class="btn btn-outline-warning" asp-controller="Cart" asp-action="Index">Cart</a>
+                            </li>
+                            <li class="my-2 my-md-0 mr-md-3">
+                                <a asp-controller="Profile" asp-action="ProfileInfo">
+                                    <svg style="color: black;" xmlns="http://www.w3.org/2000/svg" width="44" height="44" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                    </svg>
+                                </a>
+                
+                                 <form method="post" asp-controller="Account" asp-action="Logout">
+                                    <input class="btn btn-danger rounded" style="font-family:'Comic Sans MS'; font-weight: bold; font-size:20px;" type="submit" value="Выход" />
+                                </form>
+                            </li>
+                        }
                     </ul>
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
@@ -61,9 +120,23 @@
         </div>
     </footer>
 
+    
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        function toRegister() {
+                document.getElementById("login").setAttribute("hidden","hidden");
+                document.getElementById("register").removeAttribute("hidden");
+        }
+
+        function toLogin() {
+                document.getElementById("register").setAttribute("hidden","hidden");
+                document.getElementById("login").removeAttribute("hidden");
+        }
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>

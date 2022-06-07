@@ -41,25 +41,26 @@ namespace LaptopStore
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
-                    options.LoginPath = new PathString("/ViewModels/Account/Login");
-                    options.AccessDeniedPath = new PathString("/ViewModels/Account/Login");
+                    options.LoginPath = new PathString("/Shared/Account/Login");
+                    options.AccessDeniedPath = new PathString("/Shared/Account/Login");
                 });
             
             string connectionString = _confString.GetConnectionString("DefaultConnection");
             services.AddDbContext<AppDBContent>(builder => builder.UseSqlServer(connectionString,
                 b => b.MigrationsAssembly("LaptopStore")));
             services.AddRazorPages();
+
             services.AddTransient<ILaptops, LaptopRepository>();
             services.AddTransient<ICategory, CategoryRepository>();
             
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddScoped<IBaseRepository<User>, UserRepository>();
             services.AddScoped<IBaseRepository<Profile>, ProfileRepository>();
             services.AddScoped<IOrders, OrderRepository>();
-            //services.AddScoped<IAccountService, AccountService>();
-            //services.AddScoped<IProfileService, ProfileService>();
-            //services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAccounts, AccountRepository>();
             services.AddScoped(c => Cart.getCart(c));
+
             services.AddMvc();
             services.AddMemoryCache();
             services.AddSession();
@@ -111,7 +112,9 @@ namespace LaptopStore
             using (var scope = app.ApplicationServices.CreateScope())
             {
                 AppDBContent content = scope.ServiceProvider.GetRequiredService<AppDBContent>();
+                content.Database.EnsureCreated();
                 DBObjects.Initial(content);
+
             }
         }
     }
