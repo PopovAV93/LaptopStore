@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using LaptopStore.Data.Models;
 using LaptopStore.Data.Response;
 using LaptopStore.ViewModels;
 
 namespace LaptopStore.Data.Interfaces
 {
-    public interface IUsers 
+    public interface IUsers : IBaseRepository<User>
     {
-        Task<BaseResponse<IEnumerable<UserViewModel>>> GetUsers();
+        public Task Delete(long id);
     }
 }

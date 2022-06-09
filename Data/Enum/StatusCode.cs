@@ -4,9 +4,12 @@
     {
         UserNotFound = 0,
         
-        CarNotFound = 10,
-        
+        LaptopNotFound = 10,
+
+        ProfileNotFound = 20,
+
         OK = 200,
+
         InternalServerError = 500
     }
 }

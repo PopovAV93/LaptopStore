@@ -37,10 +37,6 @@ namespace LaptopStore.Controllers
                 ModelState.AddModelError("", response.Description);
                 model.errorMessage = response.Description;
             }
-            else
-            {
-
-            }
             return View(model);
         }
 
@@ -66,7 +62,6 @@ namespace LaptopStore.Controllers
             return View(model);
         }
 
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

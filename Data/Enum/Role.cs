@@ -4,7 +4,7 @@ namespace LaptopStore.Data.Enum
 {
     public enum Role
     {
-        [Display(Name = "user")]
+        [Display(Name = "User")]
         User = 0,
         [Display(Name = "Moderator")]
         Moderator = 1,

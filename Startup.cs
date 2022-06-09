@@ -55,8 +55,8 @@ namespace LaptopStore
             
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddScoped<IBaseRepository<User>, UserRepository>();
-            services.AddScoped<IBaseRepository<Profile>, ProfileRepository>();
+            services.AddScoped<IUsers, UserRepository>();
+            services.AddScoped<IProfiles, ProfileRepository>();
             services.AddScoped<IOrders, OrderRepository>();
             services.AddScoped<IAccounts, AccountRepository>();
             services.AddScoped(c => Cart.getCart(c));
@@ -103,10 +103,22 @@ namespace LaptopStore
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapControllerRoute
                 (
-                    name: "", 
+                    name: "laptops", 
                     pattern: "Laptops/{action}/{category?}",
                     defaults: new { controller = "Laptops", action = "List" }
-                    );
+                );
+                endpoints.MapControllerRoute
+                (
+                    name: "profile",
+                    pattern: "Profile/{action}/{profile?}",
+                    defaults: new { controller = "Profile", action = "ProfileInfo" }
+                );
+                endpoints.MapControllerRoute
+                (
+                    name: "user",
+                    pattern: "User/{action}/{user?}",
+                    defaults: new { controller = "User", action = "GetUsers" }
+                );
             });
 
             using (var scope = app.ApplicationServices.CreateScope())

@@ -18,8 +18,9 @@ namespace LaptopStore.Data.Repository
         }
 
         public async Task Create(Order order)
-        {
+        {   
             order.orderTime = DateTime.Now;
+            
             await _db.Orders.AddAsync(order);
             await _db.SaveChangesAsync();
 
@@ -33,7 +34,7 @@ namespace LaptopStore.Data.Repository
                     orderId = order.id,
                     price = el.laptop.price
                 };
-                _db.OrderDetails.Add(orderDetail);
+                await _db.OrderDetails.AddAsync(orderDetail);
             }
             await _db.SaveChangesAsync();
         }

@@ -1,5 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using LaptopStore.Data.Interfaces;
+using LaptopStore.Data.Models;
+using LaptopStore.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LaptopStore.Controllers
@@ -13,14 +16,30 @@ namespace LaptopStore.Controllers
             _users = users;
         }
         
-        public async Task<IActionResult> GetUsers()
+        public PartialViewResult GetUsers()
         {
-            var response = await _users.GetUsers();
-            if (response.StatusCode == Data.Enum.StatusCode.OK)
-            {
-                return View(response.Data);
-            }
-            return RedirectToAction("Index", "Home");
+            var userList = GetAllUsers();
+
+            return PartialView(userList);
         }
+
+        public async Task<IActionResult> DeleteUser(long id)
+        {
+            //User user = _users.GetAll().Single(x => x.id == id);
+            await _users.Delete(id);
+            
+            return RedirectToAction("ProfileInfo", "Profile");
+        }
+
+        private UserListViewModel GetAllUsers()
+        {
+            var userList = new UserListViewModel()
+            {
+                allUsers = _users.GetAll().OrderBy(i => i.id)
+            };
+
+            return userList;
+        }
+
     }
 }

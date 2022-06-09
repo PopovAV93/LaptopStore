@@ -17,15 +17,16 @@
                     <a class="btn alert-danger" asp-controller="Cart" asp-action="deleteFromCart" asp-route-id="@el.id">Delete from cart</a>
                 </div>
             }
+            <hr/>
+        <a class="btn btn-warning btn-lg" id="btnMakeOrder" asp-controller="Order" asp-action="Checkout" style="cursor:pointer">Make order</a>
         }
-        <hr/>
-        <a class="btn btn-warning btn-lg" id="btnMakeOrder" asp-controller="Order" asp-action="Checkout" hidden="hidden" style="cursor:pointer">Make order</a>
+        
     </div>
-    <script>
+    <!--<script>
             function onLoad() {
                 if (@Model.cart.itemsCount != 0) {
                     document.getElementById("btnMakeOrder").removeAttribute("hidden");
                 }
             }
-    </script>
+    </script>-->
 </body>

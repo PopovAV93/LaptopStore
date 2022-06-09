@@ -15,13 +15,15 @@ namespace LaptopStore.Data.Repository
 {
     public class AccountRepository : IAccounts
     {
-        private readonly IBaseRepository<User> _userRepository;
+        private readonly IUsers _userRepository;
+        private readonly IProfiles _profileRepository;
         private readonly ILogger<AccountRepository> _logger;
         
-        public AccountRepository(IBaseRepository<User> userRepository,
+        public AccountRepository(IUsers userRepository, IProfiles profileRepository,
             ILogger<AccountRepository> logger)
         {
             _userRepository = userRepository;
+            _profileRepository = profileRepository;
             _logger = logger;
         }
 
@@ -34,7 +36,7 @@ namespace LaptopStore.Data.Repository
                 {
                     return new BaseResponse<ClaimsIdentity>()
                     {
-                        Description = "There is already a user with this login",
+                        Description = "There is already a user with this email",
                     };
                 }
 
@@ -43,10 +45,11 @@ namespace LaptopStore.Data.Repository
                     email = model.email,
                     loginName = model.loginName,
                     role = Role.User,
-                    password = HashPasswordHelper.HashPassword(model.password),
+                    password = HashPasswordHelper.HashPassword(model.password)
                 };
 
                 await _userRepository.Create(user);
+                await _profileRepository.Create(new Profile { userId = user.id});
                 var result = Authenticate(user);
 
                 return new BaseResponse<ClaimsIdentity>()

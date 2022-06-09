@@ -1,11 +1,14 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using LaptopStore.Data.Interfaces;
 using LaptopStore.Data.Models;
+using LaptopStore.Data.Response;
+using LaptopStore.ViewModels;
 
 namespace LaptopStore.Data.Repository
 {
-    public class UserRepository : IBaseRepository<User>
+    public class UserRepository : IUsers
     {
         private readonly AppDBContent _db;
 
@@ -21,6 +24,13 @@ namespace LaptopStore.Data.Repository
 
         public async Task Delete(User user)
         {
+            _db.Users.Remove(user);
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task Delete(long id)
+        {
+            User user = _db.Users.Single(x => x.id == id);
             _db.Users.Remove(user);
             await _db.SaveChangesAsync();
         }

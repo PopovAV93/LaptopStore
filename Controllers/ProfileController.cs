@@ -2,49 +2,47 @@
 using LaptopStore.ViewModels;
 using LaptopStore.Data.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using LaptopStore.Data.Models;
+using System.Linq;
 
 namespace LaptopStore.Controllers
 {
     public class ProfileController : Controller
     {
-        private readonly IProfiles _profileService;
+        private readonly IProfiles _profiles;
 
-        public ProfileController(IProfiles profileService)
+        public ProfileController(IProfiles profiles)
         {
-            _profileService = profileService;
+            _profiles = profiles;
         }
 
-        [HttpGet]
+        
         public async Task<IActionResult> ProfileInfo()
         {
-            var userName = User.Identity?.Name;
-            var response = await _profileService.Get(userName);
+            var email = User.Identity?.Name;
+            var response = await _profiles.GetProfile(email);
             if (response.StatusCode == Data.Enum.StatusCode.OK)
             {
                 return View(response.Data);
             }
-            return View();
+            return RedirectToAction("Login","Account");
         }
 
         [HttpGet]
         public IActionResult Save() => PartialView();
 
         [HttpPost]
-        public async Task<IActionResult> Save(ProfileViewModel model)
+        public async Task<IActionResult> Save(Profile model)
         {
             if (ModelState.IsValid)
             {
-                if (model.Id == 0)
+                if (model.id != 0)
                 {
-                    await _profileService.Create(model);
+                    await _profiles.Update(model);
                 }
-                else
-                {
-                    await _profileService.Edit(model.Id, model);
-                }
-                return RedirectToAction("ProfileInfo");   
+                return RedirectToAction("ProfileInfo");
             }
-            return View();
+            return RedirectToAction("ProfileInfo");
         }
     }
 }

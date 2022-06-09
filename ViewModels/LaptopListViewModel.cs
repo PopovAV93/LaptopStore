@@ -1,11 +1,11 @@
 ﻿using LaptopStore.Data.Models;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace LaptopStore.ViewModels
 {
     public class LaptopListViewModel
     {
-        public IEnumerable<Laptop> allLaptops { get; set; }
+        public IQueryable<Laptop> allLaptops { get; set; }
         public string currCategory { get; set; }
     }
 }

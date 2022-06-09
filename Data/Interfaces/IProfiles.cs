@@ -5,12 +5,8 @@ using LaptopStore.ViewModels;
 
 namespace LaptopStore.Data.Interfaces
 {
-    public interface IProfiles
+    public interface IProfiles : IBaseRepository<Profile>
     {
-        Task<IBaseResponse<Profile>> Get(string userName);
-
-        Task<IBaseResponse<Profile>> Create(ProfileViewModel model);
-        
-        Task<IBaseResponse<Laptop>> Edit(long id, ProfileViewModel model);
+        Task<IBaseResponse<Profile>> GetProfile(string email);
     }
 }

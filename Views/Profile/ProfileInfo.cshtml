@@ -1,92 +1,69 @@
-﻿@model Profile
-
-<div class="card col-md-12" style="margin: 10px;">
-    <div class="card-buttons-group">
-        <button class='btn btn-primary' id='addProfileCardId'>Добавить</button>
-    </div>
-</div>
+﻿@using LaptopStore.TagHelpers
+@model Profile
 
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-5">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Данные профиля</h5>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">@Model?.age</li>
-            <li class="list-group-item">@Model?.address</li>
-          </ul>
+        <h5 class="card-title">Profile Data</h5>
+        <ul id="profile" class="list-group list-group-flush">
+            <li class="list-group-item">First Name: @Model?.firstName</li>
+            <li class="list-group-item">Last Name: @Model?.lastName</li>
+            <li class="list-group-item">Age: @Model?.age</li>
+            <li class="list-group-item">Address: @Model?.address</li>
+            <li class="list-group-item">
+                <button class="btn btn-secondary btn-lg" type="button" onclick="changeProfile()">Change</button>
+            </li>
+        </ul>
+        <form  id="profile_change" class="needs-validation" asp-action="Save" method="post" hidden="hidden">
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item">First Name: 
+                <input type="text" asp-for="id" class="form-control" hidden="hidden" value="@Model.id"/>
+                <input type="text" asp-for="userId" class="form-control" hidden="hidden" value="@Model.userId"/>
+                <input type="text" asp-for="firstName" class="form-control" />
+            </li>
+            <li class="list-group-item">Last Name: 
+                <input type="text" asp-for="lastName" class="form-control" />
+            </li>
+            <li class="list-group-item" onchange="validateAge(this.children)">Age: 
+                <input type="number" asp-for="age" class="form-control" />
+            </li>
+            <li class="list-group-item">Address: 
+                <input type="text" asp-for="address" class="form-control" />
+            </li>
+            <li class="list-group-item">
+                <button class="btn btn-primary btn-lg" type="submit">Save</button>
+                <button class="btn btn-secondary btn-lg" type="button" onclick="toProfile()">Back</button>
+            </li>
+
+            </ul>
+        </form>
       </div>
     </div>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-7">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Особое обращение с заголовком</h5>
-        <p class="card-text">С вспомогательным текстом ниже в качестве естественного перехода к дополнительному контенту.</p>
-        <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Информация о ноутбуке</h5>
-      </div>
-      <div class="modal-body">
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-close btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-        @if (User.IsInRole("Admin"))
-        {
-          <button type="button" class="btn btn-primary" id="saveBtn">Сохранить</button>   
-        }
-      </div>
-    </div>
-  </div>
-</div>
-
-@section pageScripts
-{
- <script>
-    let modal = $('#modal'); 
-    
-    function model() {
-        const model = {
-            age: $('input#Age').val(),
-            address: $('input#Address').val()
-        }            
-        return model;
-    };
-    
-    $('#saveBtn').on('click', function () {
-       $.ajax({
-           url: '@Url.Action("Save")',
-           type: 'POST',
-           data: model(),
-       }) 
-    });
-    
-    $('#addProfileCardId').on('click', function () {
-         $.ajax({
-            type: 'GET',
-            url : '/Profile/Save',
-            success: function (response) {
-                $('.modal-dialog').removeClass("modal-lg");
-                modal.find(".modal-body").html(response);
-                modal.modal('show')
-            },
-            failure: function () {
-              modal.modal('hide')
-            },
-            error: function (response) {
-                alert(response.responseText);
+        <h5 class="card-title">Title</h5>
+        <p class="card-text">Description</p>
+            @if (User.IsInRole("Admin"))
+            {
+                @Html.RenderAction("GetUsers", "User");
             }
-        });
-    });
- 
- </script> 
-}
+        <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+ <script>
+    function changeProfile() {
+        document.getElementById("profile").setAttribute("hidden","hidden");
+        document.getElementById("profile_change").removeAttribute("hidden");
+    }
+
+    function toProfile() {
+        document.getElementById("profile_change").setAttribute("hidden","hidden");
+        document.getElementById("profile").removeAttribute("hidden");
+    }
+ </script>
