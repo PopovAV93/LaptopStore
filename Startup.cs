@@ -59,7 +59,7 @@ namespace LaptopStore
             services.AddScoped<IProfiles, ProfileRepository>();
             services.AddScoped<IOrders, OrderRepository>();
             services.AddScoped<IAccounts, AccountRepository>();
-            services.AddScoped(c => Cart.getCart(c));
+            services.AddScoped(c => Cart.GetCart(c));
 
             services.AddMvc();
             services.AddMemoryCache();

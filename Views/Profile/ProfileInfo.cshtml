@@ -5,7 +5,7 @@
   <div class="col-sm-5">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Profile Data</h5>
+        <h5 class="card-title">Profile Info</h5>
         <ul id="profile" class="list-group list-group-flush">
             <li class="list-group-item">First Name: @Model?.firstName</li>
             <li class="list-group-item">Last Name: @Model?.lastName</li>
@@ -44,12 +44,11 @@
   <div class="col-sm-7">
     <div class="card">
       <div class="card-body">
-            @Html.RenderAction("UserOrders", "User")
             @if (User.IsInRole("Admin"))
             {
                 @Html.RenderAction("GetUsers", "User");
             }
-        <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+            @Html.RenderAction("UserOrders", "User")
       </div>
     </div>
   </div>

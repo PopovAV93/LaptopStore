@@ -19,7 +19,7 @@ namespace LaptopStore.Controllers
 
         public ViewResult Index()
         {
-            var items = _cart.getCartItems();
+            var items = _cart.GetCartItems();
             _cart.ListCartItems = items;
             _cart.itemsCount = items.Count();
 
@@ -31,23 +31,34 @@ namespace LaptopStore.Controllers
             return View(obj);
         }
 
-        public RedirectToActionResult addToCart(long id)
+        public RedirectToActionResult AddToCart(long id)
         {
             var item = _laptopRepository.GetAll().Single(i => i.id == id);
             if(item != null)
             {
-                _cart.addToCart(item);
+                _cart.AddToCart(item);
             }
 
             return RedirectToAction("Index");
         }
 
-        public RedirectToActionResult deleteFromCart(long id)
+        public RedirectToActionResult DeleteFromCart(long id)
         {
-            var item = _cart.getCartItems().Single(i => i.id == id);
+            var item = _cart.GetCartItems().Single(i => i.id == id);
             if (item != null)
             {
-                _cart.deleteFromCart(item);
+                _cart.DeleteFromCart(item);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public RedirectToActionResult Clear(string cartId)
+        {
+            var items = _cart.GetCartItems().Where(i => i.CartId == cartId);
+            foreach (var item in items)
+            {
+                _cart.DeleteFromCart(item);
             }
 
             return RedirectToAction("Index");

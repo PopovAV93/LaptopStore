@@ -18,7 +18,7 @@ namespace LaptopStore.Data.Models
         public List<CartItem> ListCartItems { get; set; }
         public int itemsCount { get; set; }
 
-        public static Cart getCart(IServiceProvider services)
+        public static Cart GetCart(IServiceProvider services)
         {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session; //new session creating
             var context = services.GetService<AppDBContent>();
@@ -28,19 +28,19 @@ namespace LaptopStore.Data.Models
             return new Cart(context) { CartId = cartId };
         }
 
-        public void addToCart(Laptop laptop)
+        public void AddToCart(Laptop laptop)
         {
             this.appDBContent.CartItems.Add(new CartItem { CartId = CartId, laptop = laptop, price = laptop.price });
             this.appDBContent.SaveChanges();
         }
 
-        public void deleteFromCart(CartItem cartItem)
+        public void DeleteFromCart(CartItem cartItem)
         {
             this.appDBContent.CartItems.Remove(cartItem);
             this.appDBContent.SaveChanges();
         }
 
-        public List<CartItem> getCartItems()
+        public List<CartItem> GetCartItems()
         {
             return this.appDBContent.CartItems.Where(c => c.CartId == CartId).Include(s => s.laptop).ToList();
         }

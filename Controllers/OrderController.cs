@@ -36,7 +36,7 @@ namespace LaptopStore.Controllers
         [HttpPost]
         public async Task<IActionResult> Checkout(Order order)
         {
-            cart.ListCartItems = cart.getCartItems();
+            cart.ListCartItems = cart.GetCartItems();
 
             if(cart.ListCartItems.Count == 0)
             {
@@ -54,6 +54,11 @@ namespace LaptopStore.Controllers
                     newOrder.userId = user.id;
 
                     await orders.Create(newOrder);
+
+                    foreach (var item in cart.ListCartItems)
+                    {
+                        cart.DeleteFromCart(item);
+                    }
                     return RedirectToAction("ProfileInfo","Profile");
                 }
             }
