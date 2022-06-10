@@ -39,9 +39,10 @@ namespace LaptopStore.Data.Repository
             await _db.SaveChangesAsync();
         }
 
-        public Task Delete(Order entity)
+        public async Task Delete(Order order)
         {
-            throw new NotImplementedException();
+            _db.Orders.Remove(order);
+            await _db.SaveChangesAsync();
         }
 
         public IQueryable<Order> GetAll()
@@ -49,7 +50,7 @@ namespace LaptopStore.Data.Repository
             return _db.Orders;
         }
 
-        public Task<Order> Update(Order entity)
+        public Task<Order> Update(Order order)
         {
             throw new NotImplementedException();
         }

@@ -54,11 +54,19 @@ namespace LaptopStore.Controllers
                     newOrder.userId = user.id;
 
                     await orders.Create(newOrder);
-                    return RedirectToAction("Complete");
+                    return RedirectToAction("ProfileInfo","Profile");
                 }
             }
 
             return View(order);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteOrder(long id)
+        {
+            var order = orders.GetAll().FirstOrDefault(x => x.id == id);
+            await orders.Delete(order);
+            return RedirectToAction("ProfileInfo", "Profile");
         }
 
         public IActionResult Complete()

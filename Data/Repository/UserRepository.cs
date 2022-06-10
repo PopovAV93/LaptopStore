@@ -5,6 +5,7 @@ using LaptopStore.Data.Interfaces;
 using LaptopStore.Data.Models;
 using LaptopStore.Data.Response;
 using LaptopStore.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace LaptopStore.Data.Repository
 {
@@ -47,6 +48,17 @@ namespace LaptopStore.Data.Repository
             await _db.SaveChangesAsync();
 
             return user;
+        }
+
+        public IQueryable<Order> UserOrders(string email)
+        {
+            IQueryable<Order> orderList = _db.Orders
+                .Include(x => x.user)
+                .Include(o => o.orderDetails)
+                .ThenInclude(l => l.laptop)
+                .Where(x => x.user.email == email);
+
+            return orderList;
         }
     }
 }

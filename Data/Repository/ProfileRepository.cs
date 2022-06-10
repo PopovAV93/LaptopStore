@@ -19,6 +19,8 @@ namespace LaptopStore.Data.Repository
             _db = db;
         }
 
+        
+
         public async Task<IBaseResponse<Profile>> GetProfile(string email)
         {
             try

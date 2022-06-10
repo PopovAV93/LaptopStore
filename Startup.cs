@@ -119,6 +119,12 @@ namespace LaptopStore
                     pattern: "User/{action}/{user?}",
                     defaults: new { controller = "User", action = "GetUsers" }
                 );
+                endpoints.MapControllerRoute
+                (
+                    name: "order",
+                    pattern: "Order/{action}/{order?}",
+                    defaults: new { controller = "Order", action = "DeleteOrder" }
+                );
             });
 
             using (var scope = app.ApplicationServices.CreateScope())

@@ -44,8 +44,7 @@
   <div class="col-sm-7">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Title</h5>
-        <p class="card-text">Description</p>
+            @Html.RenderAction("UserOrders", "User")
             @if (User.IsInRole("Admin"))
             {
                 @Html.RenderAction("GetUsers", "User");
