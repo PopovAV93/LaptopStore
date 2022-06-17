@@ -6,6 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\LoginAndRegister.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\js\LoginAndRegister.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\Img\Acer Nitro 5 AN515-55-534C.jpg" />
     <None Include="wwwroot\Img\ASUS Vivobook 13 Slate OLED T3300KA-LQ084W.jfif" />
     <None Include="wwwroot\Img\Digma EVE 15 C407.jpg" />
@@ -14,6 +22,7 @@
     <None Include="wwwroot\Img\Lenovo IdeaPad Flex 5 14ALC05.jpg" />
     <None Include="wwwroot\Img\MSI MODERN 14 B10MW-294XRU.jpg" />
     <None Include="wwwroot\Img\ROG Strix G15_17.png" />
+    <None Include="wwwroot\js\LoginAndRegister.js" />
   </ItemGroup>
 
   <ItemGroup>

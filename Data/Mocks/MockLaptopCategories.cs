@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LaptopStore.Data.Mocks
 {
-    public class MockLaptopCategories : IBaseRepository<Category>
+    public class MockLaptopCategories
     {
         public IEnumerable<Category> AllCategories 
         {
@@ -14,32 +14,12 @@ namespace LaptopStore.Data.Mocks
             {
                 return new List<Category>
                 {
-                    new Category {categoryName = "Ultrathin", desc = "Ultrathin laptops"},
-                    new Category {categoryName = "Transformer", desc = "Touch screen laptops, tablet/laptop hybrid"},
-                    new Category {categoryName = "Office", desc = "Laptops for study and work"},
-                    new Category {categoryName = "Gaming", desc = "Laptops with powerful GPUs and CPUs"}
+                    new Category {id = 1, categoryName = "Ultrathin", desc = "Ultrathin laptops"},
+                    new Category {id = 2, categoryName = "Transformer", desc = "Touch screen laptops, tablet/laptop hybrid"},
+                    new Category {id = 3, categoryName = "Office", desc = "Laptops for study and work"},
+                    new Category {id = 4, categoryName = "Gaming", desc = "Laptops with powerful GPUs and CPUs"}
                 };
             }
-        }
-
-        public Task Create(Category entity)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task Delete(Category entity)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IQueryable<Category> GetAll()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<Category> Update(Category entity)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

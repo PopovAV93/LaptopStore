@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LaptopStore.Data.Mocks
 {
-    public class MockLaptops : ILaptops
+    public class MockLaptops
     {
-        private readonly IBaseRepository<Category> _laptopCategories = new MockLaptopCategories();
+        private readonly MockLaptopCategories _laptopCategories = new MockLaptopCategories();
         public IEnumerable<Laptop> getLaptops
         {
             get
@@ -17,9 +17,10 @@ namespace LaptopStore.Data.Mocks
                 {
                     new Laptop
                     {
+                        id = 1,
                         name = "ROG Strix G15/17",
-                        //categoryId = 4,
-                        Category = _laptopCategories.GetAll().Single(c => c.categoryName == "Gaming"),
+                        categoryId = 4,
+                        Category = _laptopCategories.AllCategories.Single(c => c.categoryName == "Gaming"),
                         isAvailable = true,
                         isFavorite = true,
                         price = 3000,
@@ -38,9 +39,10 @@ namespace LaptopStore.Data.Mocks
                     },
                     new Laptop
                     {
+                        id = 2,
                         name = "MSI MODERN 14 B10MW-294XRU",
-                        //categoryId = 1,
-                        Category = _laptopCategories.GetAll().Single(c => c.categoryName == "Ultrathin"),
+                        categoryId = 1,
+                        Category = _laptopCategories.AllCategories.Single(c => c.categoryName == "Ultrathin"),
                         isAvailable = false,
                         isFavorite = true,
                         price = 666,
@@ -57,9 +59,10 @@ namespace LaptopStore.Data.Mocks
                     },
                     new Laptop
                     {
+                        id = 3,
                         name = "Lenovo IdeaPad Flex 5 14ALC05",
-                        //categoryId = 2,
-                        Category = _laptopCategories.GetAll().Single(c => c.categoryName == "Transformer"),
+                        categoryId = 2,
+                        Category = _laptopCategories.AllCategories.Single(c => c.categoryName == "Transformer"),
                         isAvailable = false,
                         isFavorite = true,
                         price = 1050,
@@ -73,9 +76,10 @@ namespace LaptopStore.Data.Mocks
                     },
                     new Laptop
                     {
+                        id = 4,
                         name = "Irbis NB77",
-                        //categoryId = 3,
-                        Category = _laptopCategories.GetAll().Single(c => c.categoryName == "Office"),
+                        categoryId = 3,
+                        Category = _laptopCategories.AllCategories.Single(c => c.categoryName == "Office"),
                         isAvailable = true,
                         isFavorite = false,
                         price = 233,
@@ -88,9 +92,10 @@ namespace LaptopStore.Data.Mocks
                     },
                     new Laptop
                     {
+                        id = 5,
                         name = "HP Laptop 14s-fq0111ur",
-                        //categoryId = 1,
-                        Category = _laptopCategories.GetAll().Single(c => c.categoryName == "Ultrathin"),
+                        categoryId = 1,
+                        Category = _laptopCategories.AllCategories.Single(c => c.categoryName == "Ultrathin"),
                         isAvailable = true,
                         isFavorite = false,
                         price = 566,
@@ -103,9 +108,10 @@ namespace LaptopStore.Data.Mocks
                     },
                     new Laptop
                     {
+                        id = 6,
                         name = "Digma EVE 15 C407",
-                        //categoryId = 3,
-                        Category = _laptopCategories.GetAll().Single(c => c.categoryName == "Office"),
+                        categoryId = 3,
+                        Category = _laptopCategories.AllCategories.Single(c => c.categoryName == "Office"),
                         isAvailable = true,
                         isFavorite = false,
                         price = 333,
@@ -119,9 +125,10 @@ namespace LaptopStore.Data.Mocks
                     },
                     new Laptop
                     {
+                        id = 7,
                         name = "ASUS Vivobook 13 Slate OLED T3300KA-LQ084W",
-                        //categoryId = 2,
-                        Category = _laptopCategories.GetAll().Single(c => c.categoryName == "Transformer"),
+                        categoryId = 2,
+                        Category = _laptopCategories.AllCategories.Single(c => c.categoryName == "Transformer"),
                         isAvailable = true,
                         isFavorite = true,
                         price = 1150,
@@ -135,9 +142,10 @@ namespace LaptopStore.Data.Mocks
                     },
                     new Laptop
                     {
+                        id = 8,
                         name = "Acer Nitro 5 AN515-55-534C",
-                        //categoryId = 4,
-                        Category = _laptopCategories.GetAll().Single(c => c.categoryName == "Gaming"),
+                        categoryId = 4,
+                        Category = _laptopCategories.AllCategories.Single(c => c.categoryName == "Gaming"),
                         isAvailable = false,
                         isFavorite = true,
                         price = 1333,
@@ -157,37 +165,5 @@ namespace LaptopStore.Data.Mocks
         }
 
         public IEnumerable<Laptop> getFavLaptops { get; set; }
-
-        IQueryable<Laptop> ILaptops.GetFavLaptops() => throw new System.NotImplementedException();
-
-        public Task Create(Laptop entity)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task Delete(Laptop entity)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IQueryable<Laptop> GetAll()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IQueryable<Laptop> GetLaptopsByCategory(Category category)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Laptop GetObjectLaptop(long laptopId)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<Laptop> Update(Laptop entity)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
